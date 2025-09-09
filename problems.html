@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problems - Tech Help Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html" aria-current="page">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="list-header">
+    <form class="search" id="searchForm">
+      <input type="search" id="searchInput" placeholder="Search problems..." aria-label="Search problems">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="filters">
+      <select id="category" class="select" aria-label="Category">
+        <option value="">All Categories</option>
+        <option value="performance">Performance</option>
+        <option value="virus">Virus/Malware</option>
+        <option value="hardware">Hardware</option>
+        <option value="software">Software</option>
+        <option value="network">Network</option>
+        <option value="data">Data Recovery</option>
+      </select>
+      <select id="os" class="select" aria-label="OS">
+        <option value="">All OS</option>
+        <option>Windows</option>
+        <option>macOS</option>
+        <option>Linux</option>
+      </select>
+      <select id="difficulty" class="select" aria-label="Difficulty">
+        <option value="">All Difficulty</option>
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>Hard</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="results" class="grid"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const problems=[
+  {id:'system-running-slow', title:'System Running Slow', category:'performance', os:['Windows'], difficulty:'Easy', summary:'Task Manager, Disk Cleanup, startup apps, malware scan, and RAM.'},
+  {id:'pc-wont-turn-on', title:'PC Won’t Turn On', category:'hardware', os:['Windows','Linux','macOS'], difficulty:'Medium', summary:'Power checks, battery removal (laptops), PSU/adapter tests.'},
+  {id:'black-screen-no-display', title:'Black Screen or No Display', category:'hardware', os:['Windows','Linux','macOS'], difficulty:'Medium', summary:'Brightness, external display, boot menu, GPU driver, RAM reseat.'},
+  {id:'overheating-issue', title:'Overheating Issue', category:'hardware', os:['Windows','Linux','macOS'], difficulty:'Medium', summary:'Ventilation, dust clean, high CPU apps, thermal paste, fans.'},
+  {id:'battery-not-charging', title:'Battery Not Charging', category:'hardware', os:['Windows'], difficulty:'Medium', summary:'Adapter, battery drivers and power troubleshooter.'},
+  {id:'application-crashes', title:'Application Crashes or Won’t Open', category:'software', os:['Windows'], difficulty:'Easy', summary:'Update, reinstall, compatibility, run as admin, AV check.'},
+  {id:'wifi-not-connecting', title:'WiFi Not Connecting', category:'network', os:['Windows'], difficulty:'Medium', summary:'WiFi toggle, router restart, forget/reconnect, troubleshoot, drivers.'},
+  {id:'no-sound', title:'No Sound from Speakers or Headphones', category:'hardware', os:['Windows'], difficulty:'Easy', summary:'Output device, driver update, audio service restart.'},
+  {id:'usb-ports-not-working', title:'USB Ports Not Working', category:'hardware', os:['Windows'], difficulty:'Medium', summary:'Try multiple devices/ports, drivers, USB power settings, BIOS.'},
+  {id:'hard-drive-not-detected', title:'Hard Drive Not Detected', category:'hardware', os:['Windows'], difficulty:'Hard', summary:'BIOS, connections, initialize disk, CHKDSK, replacement.'},
+  {id:'forgot-windows-password', title:'Forgot Windows Password', category:'software', os:['Windows'], difficulty:'Hard', summary:'Reset options, installation media, 3rd‑party tools.'},
+  {id:'graphics-driver-not-working', title:'Graphics Driver Not Working', category:'software', os:['Windows'], difficulty:'Medium', summary:'Uninstall, download new GPU driver, clean install, restart.'},
+  {id:'windows-update-failing', title:'Windows Update Failing', category:'software', os:['Windows'], difficulty:'Medium', summary:'Troubleshooter, reset services, clear cache, SFC.'},
+  {id:'data-loss', title:'Data Loss', category:'data', os:['Windows'], difficulty:'Hard', summary:'Recycle Bin, File History, System Restore, recovery tools.'},
+  {id:'time-date-reset', title:'Time & Date Reset After Restart', category:'hardware', os:['Windows'], difficulty:'Easy', summary:'Replace CMOS battery and set time automatically.'},
+  { id: 'bluetooth-not-working', title: 'Bluetooth Not Working', category: 'hardware', os: ['Windows'], difficulty: 'Easy', summary: 'Bluetooth toggle, troubleshooter, driver update, support service restart.' },
+  { id: 'IP Address Configuration Issues', title: 'IP Address Configuration Issues', category: 'network', os: ['Windows'], difficulty: 'Medium', summary: 'Release/renew IP, flush DNS, auto IP config, static IP.' },
+  { id: 'cannot-access-websites', title: 'Cannot Access Specific Websites', category: 'network', os: ['Windows'], difficulty: 'Medium', summary: 'Clear cache, different browser, flush DNS, edit hosts file, Google DNS.' },
+  { id: 'wifi-keeps-disconnecting', title: 'WiFi Keeps Disconnecting', category: 'network', os: ['Windows'], difficulty: 'Medium', summary: 'Driver update, disable power saving, channel settings, roaming sensitivity.' },
+  { id: 'slow-internet-speed', title: 'Slow Internet Speed', category: 'network', os: ['Windows'], difficulty: 'Medium', summary: 'Speed test, update drivers, close heavy apps, Ethernet over WiFi.' },
+  { id: 'ethernet-port-not-working', title: 'Ethernet Port Not Working', category: 'network', os: ['Windows'], difficulty: 'Medium', summary: 'Ethernet cable, config, driver issues, static IP.' },
+  { id: 'bluetooth-not-working', title: 'Bluetooth Not Working / Not Turning On', category: 'hardware', os: ['Windows'], difficulty: 'Medium', summary: 'Enable Bluetooth, Troubleshooter, Driver update, Bluetooth service restart, Airplane mode OFF.' },
+  { id: 'bluetooth-device-not-detecting', title: 'Bluetooth Device Not Detecting', category: 'hardware', os: ['Windows'], difficulty: 'Medium', summary: 'Turn off/on, Restart PC, Remove device & re-pair, Pairing mode, Update driver.' },
+  { id: 'bluetooth-disconnects-frequently', title: 'Paired Bluetooth Device Disconnects Frequently', category: 'hardware', os: ['Windows'], difficulty: 'Medium', summary: 'Disable Power Saving, Re-pair device, Reduce range/interference.' },
+  { id: 'bluetooth-audio-not-working', title: 'Bluetooth Audio Device Not Working', category: 'hardware', os: ['Windows'], difficulty: 'Medium', summary: 'Set default audio, reinstall drivers, check Bluetooth audio service.' },
+  { id: 'windows-update-stuck', title: 'Windows Update Stuck or Fails to Install', category: 'software', os: ['Windows'], difficulty: 'Medium', summary: 'Troubleshooter, clear SoftwareDistribution, run SFC, restart.' },
+  { id: 'update-error-0x80070002', title: 'Update Fails with Error (0x80070002)', category: 'software', os: ['Windows'], difficulty: 'Medium', summary: 'Check Date/Time, delete temp update files, reset update components, retry update.' },
+    
+  {id:'webcam-not-detected', title:'Webcam Not Detected', category:'hardware', os:['Windows'], difficulty:'Easy', summary:'Privacy settings, drivers, test apps, BIOS camera toggle.'}
+];
+
+function render(list){
+  const wrap=document.getElementById('results');
+  wrap.innerHTML=list.map(p=>`<a class="card" href="problem.html?id=${p.id}"><h3>${p.title}</h3><p>${p.summary}</p><div class="meta"><span class="badge">${p.category}</span><span class="badge">${p.difficulty}</span></div></a>`).join('');
+}
+
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase().trim();
+  const category=document.getElementById('category').value;
+  const os=document.getElementById('os').value;
+  const difficulty=document.getElementById('difficulty').value;
+  const filtered=problems.filter(p=>{
+    const qok=!q||p.title.toLowerCase().includes(q)||p.summary.toLowerCase().includes(q);
+    const cok=!category||p.category===category;
+    const ook=!os||p.os.includes(os);
+    const dok=!difficulty||p.difficulty===difficulty;
+    return qok&&cok&&ook&&dok;
+  });
+  render(filtered);
+}
+
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();applyFilters();});
+['category','os','difficulty'].forEach(id=>document.getElementById(id).addEventListener('change',applyFilters));
+render(problems);
+</script>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html> 

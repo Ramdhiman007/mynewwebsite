@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech Help Hub - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Fix PC Problems with Step‑by‑Step Guides</h1>
+      <p>Search hundreds of common issues for Windows, macOS, Linux, hardware, and more.</p>
+      <form class="search" action="problems.html">
+        <input type="search" name="q" placeholder="Search problems e.g. slow computer, wifi not working" aria-label="Search problems">
+        <button type="submit" class="btn">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="features container">
+    <h2>Popular Categories</h2>
+    <div class="cards">
+      <a class="card" href="problems.html?category=performance">
+        <h3>Performance Optimization</h3>
+        <p>Speed up your PC with proven steps.</p>
+      </a>
+      <a class="card" href="problems.html?category=virus">
+        <h3>Virus & Malware</h3>
+        <p>Detect and remove infections safely.</p>
+      </a>
+      <a class="card" href="problems.html?category=hardware">
+        <h3>Hardware Issues</h3>
+        <p>Diagnose RAM, disk, battery, and more.</p>
+      </a>
+      <a class="card" href="problems.html?category=network">
+        <h3>Network & Wi‑Fi</h3>
+        <p>Fix connectivity and speed problems.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="cta container">
+    <div class="cta-box">
+      <div>
+        <h2>Can’t find your issue?</h2>
+        <p>Submit your problem and we’ll add a guide.</p>
+      </div>
+      <a class="btn" href="submit.html">Submit a Problem</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html> 

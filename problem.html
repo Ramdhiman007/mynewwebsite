@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem Detail - Tech Help Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="content">
+  <article>
+    <h1 id="title">Problem</h1>
+    <p id="summary" class="muted"></p>
+
+    <div id="meta" class="meta" style="margin-bottom:12px"></div>
+
+    <h2>Steps to fix</h2>
+    <ol id="steps" class="steps"></ol>
+
+    <div style="margin-top:18px">
+      <h3>Rate this solution</h3>
+      <div id="rating"></div>
+      <div id="rateMsg" class="alert ok" style="display:none;margin-top:8px">Thanks for the feedback!</div>
+    </div>
+
+    <section id="videoMount" aria-label="Video guide"></section>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const db={
+  'system-running-slow':{
+    title:'System Running Slow',
+    summary:'Task Manager, Disk Cleanup, startup apps, RAM, and malware scan.',
+    category:'performance', difficulty:'Easy', os:['Windows'],
+    steps:[
+      {text:'Open Task Manager (Ctrl + Shift + Esc) and check CPU, Memory, and Disk usage.'},
+      {text:'Close unnecessary background apps and high‑usage processes.'},
+      {text:'Run Disk Cleanup: Press Windows key → type "Disk Cleanup" → select drive C: → clean temporary files.', img:'assets/img/slow-pc/disk-cleanup.svg', alt:'Disk Cleanup'},
+      {text:'Disable unnecessary Startup programs: Task Manager → Startup tab → Disable.', img:'assets/img/slow-pc/startup.svg', alt:'Startup tab'},
+      {text:'Upgrade RAM if needed.'},
+      {text:'Scan for malware using Windows Defender or a trusted antivirus.'}
+    ]
+  },
+  'wifi-drop':{
+    title:'Wi‑Fi keeps disconnecting',
+    summary:'Stabilize Wi‑Fi by driver, channel and power settings.',
+    category:'network', difficulty:'Medium', os:['Windows','Linux','macOS'],
+    steps:[
+      {text:'Update network adapter drivers', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
+      {text:'Set Wi‑Fi channel to a less crowded one', img:'assets/img/wifi/channel.svg', alt:'Router channel change'},
+      {text:'Disable power saving for the adapter', img:'assets/img/wifi/power.svg', alt:'Power saving setting'},
+      {text:'Reset network settings'}
+    ]
+  },
+  // Exact mappings for the provided problems
+  'pc-wont-turn-on':{
+    title:'PC Won’t Turn On',
+    summary:'Power, outlet, battery (laptop), long‑press reset, PSU/adapter.',
+    category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
+    steps:[
+      {text:'Ensure power cable is connected properly and try a different power outlet.', img:'assets/img/placeholder.svg'},
+      {text:'For laptops: remove battery, plug in charger, and try turning on.'},
+      {text:'Press and hold power button for 10‑15 seconds to discharge.'},
+      {text:'Check PSU (desktops) or charger adapter.'},
+      {text:'If no LED indicators light up, suspect hardware failure and contact a technician.'}
+    ]
+  },
+  'black-screen-no-display':{
+    title:'Black Screen or No Display',
+    summary:'Brightness, external monitor, boot menu, graphics drivers, RAM.',
+    category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
+    steps:[
+      {text:'Check display brightness.'},
+      {text:'Test with an external monitor (HDMI/VGA).', img:'assets/img/placeholder.svg'},
+      {text:'Restart and press F8 / F12 / Esc to access Boot Menu.'},
+      {text:'Update Graphics Driver from NVIDIA/Intel/AMD website.'},
+      {text:'If stuck after BIOS: power off, reseat RAM, or test with another RAM module.'}
+    ]
+  },
+  'overheating-issue':{
+    title:'Overheating Issue',
+    summary:'Ventilation, cleaning, CPU usage check, thermal paste, cooling pad.',
+    category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
+    steps:[
+      {text:'Ensure proper ventilation and don’t block air vents.'},
+      {text:'Clean internal fans using compressed air.', img:'assets/img/placeholder.svg'},
+      {text:'Check Task Manager for high CPU usage programs.'},
+      {text:'Apply fresh thermal paste to CPU.'},
+      {text:'Consider a laptop cooling pad and replace faulty fans if necessary.'}
+    ]
+  },
+  'battery-not-charging':{
+    title:'Battery Not Charging',
+    summary:'Charger connection, battery drivers, power troubleshooter, replacement.',
+    category:'hardware', difficulty:'Medium', os:['Windows'],
+    steps:[
+      {text:'Ensure charger is connected properly and LED is on.'},
+      {text:'Remove battery and connect charger → try powering on.'},
+      {text:'Update Battery Drivers: Device Manager → Batteries → Update driver.', img:'assets/img/placeholder.svg'},
+      {text:'Run Power Troubleshooter: Settings → Update & Security → Troubleshoot → Power.'},
+      {text:'Replace battery if defective.'}
+    ]
+  },
+  'application-crashes':{
+    title:'Application Crashes or Won’t Open',
+    summary:'Update/reinstall, compatibility, admin mode, AV, Windows Update.',
+    category:'software', difficulty:'Easy', os:['Windows'],
+    steps:[
+      {text:'Update the application to latest version.'},
+      {text:'Reinstall the application.'},
+      {text:'Check for software compatibility with OS version.'},
+      {text:'Right‑click → Run as Administrator.'},
+      {text:'Temporarily disable antivirus to check if blocking.'},
+      {text:'Update Windows to latest patches.'}
+    ]
+  },
+  'wifi-not-connecting':{
+    title:'WiFi Not Connecting',
+    summary:'WiFi toggle, router restart, forget/reconnect, troubleshoot, drivers, reset TCP/IP.',
+    category:'network', difficulty:'Medium', os:['Windows'],
+    steps:[
+      {text:'Ensure WiFi is turned on (Laptop Fn key + WiFi key).'},
+      {text:'Restart router.'},
+      {text:'Forget and reconnect network: Settings → Network & Internet → WiFi → Manage known networks → Forget → Reconnect.'},
+      {text:'Run Network Troubleshooter: Settings → Troubleshoot → Internet Connections.'},
+      {text:'Update WiFi Driver: Device Manager → Network Adapters → Update driver.', img:'assets/img/wifi/driver.svg'},
+      {text:'Reset TCP/IP stack (Admin CMD): netsh int ip reset; netsh winsock reset; ipconfig /release; ipconfig /renew; ipconfig /flushdns.', img:'assets/img/placeholder.svg'}
+    ]
+  },
+  'no-sound':{
+    title:'No Sound from Speakers or Headphones',
+    summary:'Volume, default device, drivers, Windows Audio service, test peripherals.',
+    category:'hardware', difficulty:'Easy', os:['Windows'],
+    steps:[
+      {text:'Check volume settings.'},
+      {text:'Ensure correct audio output device selected: Right‑click speaker → Sounds → Playback → Set default.'},
+      {text:'Update Audio Driver: Device Manager → Sound, Video, and Game Controllers → Update driver.'},
+      {text:'Restart Windows Audio service: services.msc → Windows Audio → Restart.'},
+      {text:'Test with different headphones or speakers.'}
+    ]
+  },
+  'usb-ports-not-working':{
+    title:'USB Ports Not Working',
+    summary:'Try other devices/ports, reinstall controller drivers, power setting, BIOS.',
+    category:'hardware', difficulty:'Medium', os:['Windows'],
+    steps:[
+      {text:'Try multiple USB devices and ports.'},
+      {text:'Unplug all devices, restart PC.'},
+      {text:'Update USB Controller Drivers: Device Manager → Universal Serial Bus Controllers → Update driver.'},
+      {text:'Disable USB selective suspend: Control Panel → Power Options → Advanced → USB settings → Disable selective suspend.'},
+      {text:'Check BIOS settings to ensure USB ports are enabled.'}
+    ]
+  },
+  'hard-drive-not-detected':{
+    title:'Hard Drive Not Detected',
+    summary:'BIOS detect, cables, Disk Management initialization, CHKDSK, replace if bad.',
+    category:'hardware', difficulty:'Hard', os:['Windows'],
+    steps:[
+      {text:'Check BIOS/UEFI → Ensure hard drive is detected.'},
+      {text:'Check physical SATA/Power connections.'},
+      {text:'Open Disk Management (Win + X → Disk Management) and initialize disk if needed.'},
+      {text:'Run CHKDSK to scan for errors: chkdsk C: /f /r.'},
+      {text:'Replace faulty hard drive if necessary.'}
+    ]
+  },
+  'forgot-windows-password':{
+    title:'Forgot Windows Password',
+    summary:'Reset disk, Microsoft account recovery, installation media, third‑party tools.',
+    category:'software', difficulty:'Hard', os:['Windows'],
+    steps:[
+      {text:'Use Password Reset Disk (if created earlier).'},
+      {text:'Windows 10/11: At login → Click “I forgot my password”.'},
+      {text:'Use Windows Installation Media → Advanced Options → Command Prompt → Create new local admin account.'},
+      {text:'Use third‑party tools (e.g., Ophcrack).'}
+    ]
+  },
+  'graphics-driver-not-working':{
+    title:'Graphics Driver Not Working',
+    summary:'Uninstall old, install latest from vendor, clean mode, restart.',
+    category:'software', difficulty:'Medium', os:['Windows'],
+    steps:[
+      {text:'Uninstall existing driver: Device Manager → Display Adapters → Uninstall driver.'},
+      {text:'Download latest driver from GPU manufacturer (NVIDIA, AMD, Intel).'},
+      {text:'Install driver in Clean Mode.'},
+      {text:'Restart PC after installation.'}
+    ]
+  },
+  'windows-update-failing':{
+    title:'Windows Update Failing',
+    summary:'Troubleshooter, reset services/cache, SFC, retry.',
+    category:'software', difficulty:'Medium', os:['Windows'],
+    steps:[
+      {text:'Run Windows Update Troubleshooter: Settings → Troubleshoot → Windows Update → Run Troubleshooter.'},
+      {text:'Delete SoftwareDistribution contents: stop wuauserv/bits, delete folder, start services again.'},
+      {text:'Check system for corrupted files: sfc /scannow.'},
+      {text:'Retry Windows Update.'}
+    ]
+  },
+  'data-loss':{
+    title:'Data Loss',
+    summary:'Recycle Bin, File History, System Restore, third‑party recovery tools.',
+    category:'data', difficulty:'Hard', os:['Windows'],
+    steps:[
+      {text:'Check Recycle Bin.'},
+      {text:'Use File History (if enabled).'},
+      {text:'Use System Restore (if restore point exists).'},
+      {text:'Use third‑party data recovery tools like Recuva or EaseUS Data Recovery.'},
+      {text:'Always back up important files regularly.'}
+    ]
+  },
+  'time-date-reset':{
+    title:'Time & Date Reset After Restart',
+    summary:'Replace CMOS battery; set correct time and automation.',
+    category:'hardware', difficulty:'Easy', os:['Windows'],
+    steps:[
+      {text:'Replace CMOS battery on motherboard (CR2032).'},
+      {text:'Set correct time and date in Windows → Settings → Time & Language.'},
+      {text:'Ensure “Set time automatically” is ON.'}
+    ]
+      },
+      'bluetooth-not-working': {
+        title: 'Bluetooth Not Working',
+        summary: 'Fix Bluetooth issues due to settings, drivers, or pairing problems.',
+        category: 'hardware',
+        difficulty: 'Easy',
+        os: ['Windows'],
+        steps: [
+          { text: 'Ensure Bluetooth is ON: Settings → Devices → Bluetooth → Enable.' },
+          { text: 'Run Bluetooth Troubleshooter: Settings → Troubleshoot → Bluetooth → Run troubleshooter.' },
+          { text: 'Update Bluetooth Driver: Device Manager → Bluetooth → Update driver.' },
+          { text: 'Restart Bluetooth Support Service: services.msc → Locate “Bluetooth Support Service” → Restart.' },
+          { text: 'Remove and re-pair the device.' }
+        ]
+      },	  
+	  'IP Address Configuration Issues': {
+        title: 'IP Address Configuration Issues',
+        summary: 'Fix IP config issues by releasing/renewing IP or setting static IP.',
+        category: 'network',
+        difficulty: 'Medium',
+        os: ['Windows'],
+        steps: [
+          { text: 'Release & Renew IP: CMD → ipconfig /release → ipconfig /renew.' },
+          { text: 'Flush DNS Cache: ipconfig /flushdns.' },
+          { text: 'Ensure Auto Obtain IP: Control Panel → Network & Sharing Center → Adapter settings → IPv4 → Obtain IP address automatically.' },
+          { text: 'Set Static IP if needed.' }
+        ]
+      },
+	  'cannot-access-websites': {
+        title: 'Cannot Access Specific Websites',
+        summary: 'Fix access issues by clearing cache, changing DNS, or checking hosts file.',
+        category: 'network',
+        difficulty: 'Medium',
+        os: ['Windows'],
+        steps: [
+          { text: 'Clear Browser Cache & Cookies.' },
+          { text: 'Use a different browser.' },
+          { text: 'Flush DNS Cache: ipconfig /flushdns.' },
+          { text: 'Check hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts → Ensure no blocking.' },
+          { text: 'Change DNS to Google DNS: IPv4 → Preferred: 8.8.8.8 / Alternate: 8.8.4.4.' }
+        ]
+      },
+      'wifi-keeps-disconnecting': {
+        title: 'WiFi Keeps Disconnecting',
+        summary: 'Fix WiFi instability due to driver, power saving, or interference.',
+        category: 'network',
+        difficulty: 'Medium',
+        os: ['Windows'],
+        steps: [
+          { text: 'Update WiFi driver from manufacturer site.' },
+          { text: 'Disable Power Saving Mode: Device Manager → Network Adapters → WiFi Adapter → Properties → Power Management tab → Uncheck "Allow computer to turn off this device to save power".' },
+          { text: 'Set Wireless Channel Manually in Router Settings to avoid interference.' },
+          { text: 'Change Network Adapter Roaming Sensitivity in Advanced Settings.' }
+        ]
+      },
+       'slow-internet-speed': {
+        title: 'Slow Internet Speed',
+        summary: 'Fix slow internet by testing speed, optimizing connection, updating drivers.',
+        category: 'network',
+        difficulty: 'Medium',
+        os: ['Windows'],
+        steps: [
+          { text: 'Test speed at https://www.speedtest.net' },
+          { text: 'Move closer to WiFi router.' },
+          { text: 'Reboot modem/router.' },
+          { text: 'Ensure no heavy downloads/streaming in background.' },
+          { text: 'Update Network Drivers: Device Manager → Network Adapters → Update driver.' },
+          { text: 'Disable VPN/Proxy: Settings → Network & Internet → Proxy → Disable manual proxy.' },
+          { text: 'Use Ethernet instead of WiFi for stability.' }
+        ]
+      },	
+       'ethernet-port-not-working': {
+        title: 'Ethernet Port Not Working',
+        summary: 'Fix Ethernet port not working due to cables, config, or driver issues.',
+        category: 'network',
+        difficulty: 'Medium',
+        os: ['Windows'],
+        steps: [
+          { text: 'Check Ethernet cable and port (try different cable & port).' },
+          { text: 'Check Network Configuration: Open CMD → ipconfig /all → Check if Ethernet adapter shows IP.' },
+          { text: 'Update Ethernet Controller Driver: Device Manager → Network Adapters → Right-click Ethernet adapter → Update driver.' },
+          { text: 'Disable & Re-enable Ethernet Adapter: Device Manager → Network Adapters → Disable → Enable.' },
+          { text: 'Set Static IP (if DHCP fails): Settings → Network & Internet → Ethernet → Change adapter options → Properties → IPv4 → Set Static IP.' }
+        ]
+      },	  
+	  'bluetooth-not-working': {
+    title: 'Bluetooth Not Working / Not Turning On',
+    summary: 'Fix Bluetooth not turning on, devices not detecting, or frequent disconnections.',
+    category: 'hardware',
+    difficulty: 'Easy',
+    os: ['Windows'],
+    steps: [
+      { text: 'Make sure Bluetooth is enabled: Settings → Devices → Bluetooth & other devices → Toggle Bluetooth ON.' },
+      { text: 'Run Bluetooth Troubleshooter: Settings → System → Troubleshoot → Other troubleshooters → Bluetooth → Run.' },
+      { text: 'Update Bluetooth Drivers: Right-click Start → Device Manager → Bluetooth → Right-click Bluetooth Adapter → Update driver → Search automatically.' },
+      { text: 'Restart Bluetooth Support Service: Windows + R → type services.msc → Find "Bluetooth Support Service" → Right-click → Restart.' },
+      { text: 'Check Airplane Mode: Settings → Network & Internet → Airplane mode → Ensure it is OFF.' }
+    ]
+  },
+  'bluetooth-device-not-detecting': {
+    title: 'Bluetooth Device Not Detecting',
+    summary: 'Fix when Bluetooth devices are not being detected.',
+    category: 'hardware',
+    difficulty: 'Medium',
+    os: ['Windows'],
+    steps: [
+      { text: 'Turn Bluetooth OFF and ON again from Settings.' },
+      { text: 'Restart PC.' },
+      { text: 'Remove device if previously paired: Settings → Devices → Bluetooth & other devices → Select Device → Remove device → Re-pair.' },
+      { text: 'Ensure device is in Pairing Mode.' },
+      { text: 'Update Bluetooth driver from Device Manager.' }
+    ]
+  },
+  'bluetooth-disconnects-frequently': {
+    title: 'Paired Bluetooth Device Disconnects Frequently',
+    summary: 'Fix frequent disconnections of paired Bluetooth devices.',
+    category: 'hardware',
+    difficulty: 'Medium',
+    os: ['Windows'],
+    steps: [
+      { text: 'Disable Power Saving: Device Manager → Bluetooth → Select Adapter → Properties → Power Management tab → Uncheck "Allow the computer to turn off this device to save power".' },
+      { text: 'Re-pair the Bluetooth device.' },
+      { text: 'Move closer to the PC to avoid range issues.' },
+      { text: 'Avoid interference from other wireless devices.' }
+    ]
+  },
+  'bluetooth-audio-not-working': {
+    title: 'Bluetooth Audio Device (Headphones, Speakers) Not Working',
+    summary: 'Fix when Bluetooth headphones or speakers do not output sound.',
+    category: 'hardware',
+    difficulty: 'Medium',
+    os: ['Windows'],
+    steps: [
+      { text: 'Set device as default audio output: Right-click Sound icon → Open Sound Settings → Output → Select Bluetooth device.' },
+      { text: 'Reinstall Audio & Bluetooth Drivers.' },
+      { text: 'Check Bluetooth Audio Services: services.msc → "Bluetooth Audio Gateway Service" → Ensure it’s running.' },
+      { text: 'Restart PC after pairing.' }
+    ]
+  },  
+  'windows-update-stuck': {
+    title: 'Windows Update Stuck or Fails to Install',
+    summary: 'Fix Windows Update stuck or not installing issues.',
+    category: 'software',
+    difficulty: 'Medium',
+    os: ['Windows'],
+    steps: [
+      { text: 'Run Windows Update Troubleshooter: Settings → Update & Security → Troubleshoot → Windows Update → Run.' },
+      { text: 'Clear Software Distribution Folder: Open CMD as Admin → net stop wuauserv; net stop bits; Go to C:\\Windows\\SoftwareDistribution → Delete contents; Then restart services: net start wuauserv; net start bits.' },
+      { text: 'Run System File Checker (SFC): Open CMD as Admin → sfc /scannow.' },
+      { text: 'Restart PC and retry Update.' }
+    ]
+  },
+  'update-error-0x80070002': {
+    title: 'Update Fails with Error Code (e.g., 0x80070002)',
+    summary: 'Fix Windows Update error codes by resetting update components.',
+    category: 'software',
+    difficulty: 'Medium',
+    os: ['Windows'],
+    steps: [
+      { text: 'Ensure Date & Time are correct.' },
+      { text: 'Delete temporary update files: Same steps as clearing Software Distribution folder.' },
+      { text: 'Reset Windows Update components: net stop wuauserv; net stop cryptSvc; net stop bits; net stop msiserver; ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old; ren C:\\Windows\\System32\\catroot2 catroot2.old; net start wuauserv; net start cryptSvc; net start bits; net start msiserver.' },
+      { text: 'Retry Windows Update.' }
+    ]
+  },
+    	  
+  'webcam-not-detected':{
+    title:'Webcam Not Detected',
+    summary:'Privacy permissions, driver update, app tests, BIOS camera enable.',
+    category:'hardware', difficulty:'Easy', os:['Windows'],
+    steps:[
+      {text:'Check privacy settings: Settings → Privacy → Camera → Allow apps to use camera.'},
+      {text:'Update webcam driver: Device Manager → Imaging devices → Update driver.'},
+      {text:'Test webcam in different applications.'},
+      {text:'Check BIOS settings → Ensure integrated webcam is enabled.'}
+    ]
+  }
+};
+
+(function init(){
+  const id=new URLSearchParams(location.search).get('id')||'slow-pc';
+  const p=db[id];
+  if(!p){document.getElementById('content').innerHTML='<p class="alert err">Problem not found.</p>';return}
+  document.getElementById('title').textContent=p.title;
+  document.getElementById('summary').textContent=p.summary;
+  document.getElementById('meta').innerHTML=`<span class="badge">${p.category}</span> <span class="badge">${p.difficulty}</span> ${p.os.map(o=>`<span class=badge>${o}</span>`).join(' ')}`;
+  document.getElementById('steps').innerHTML=p.steps.map(s=>{
+    if(typeof s==='string'){return `<li class=step><div class=step-body>${s}</div></li>`}
+    const media=s.img?`<div class=step-media><a href="${s.img}" target="_blank" rel="noopener"><img src="${s.img}" alt="${s.alt||''}"></a></div>`:'';
+    return `<li class=step><div class=step-body>${s.text}</div>${media}</li>`
+  }).join('');
+
+  const ratingWrap=document.getElementById('rating');
+  const saved=store.get('ratings',{});
+  const my=saved[id]||0;
+  for(let i=1;i<=5;i++){
+    const b=document.createElement('button');
+    b.textContent='★';
+    b.setAttribute('aria-label',`Rate ${i} stars`);
+    b.className='btn btn-sm';
+    b.style.opacity=i<=my?1:.6;
+    b.addEventListener('click',()=>{
+      const ratings=store.get('ratings',{});ratings[id]=i;store.set('ratings',ratings);
+      document.getElementById('rateMsg').style.display='block';
+      [...ratingWrap.children].forEach((c,idx)=>c.style.opacity=idx<i?1:.6);
+    });
+    ratingWrap.appendChild(b);
+  }
+})();
+</script>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html> 

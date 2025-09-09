@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin - Tech Help Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Admin</h1>
+  <p class="muted">Demo dashboard. Requires login.</p>
+
+  <div id="adminGuard" class="alert err" style="display:none">Please login to view admin.</div>
+
+  <section id="panel" style="display:none">
+    <h2>Submitted Problems</h2>
+    <div id="subs" class="grid"></div>
+
+    <h2 style="margin-top:24px">Contact Messages</h2>
+    <div id="msgs" class="grid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script>
+function render(){
+  const user=auth.user();
+  const guard=document.getElementById('adminGuard');
+  const panel=document.getElementById('panel');
+  if(!user){guard.style.display='block';panel.style.display='none';return}
+  guard.style.display='none';panel.style.display='block';
+
+  const subs=store.get('submissions',[]);
+  const wrap=document.getElementById('subs');
+  wrap.innerHTML=subs.length?subs.map((s,idx)=>`<div class="card"><h3>${s.category} (${s.os})</h3><p>${s.desc}</p><div class="meta"><span class=badge>${new Date(s.ts).toLocaleString()}</span><span class=badge>${s.name}</span><span class=badge>${s.email}</span></div><div style=margin-top:8px><button class="btn btn-sm" onclick="markHandled(${idx})">${s.handled?'Handled':'Mark handled'}</button> <button class="btn btn-sm" onclick="delSub(${idx})">Delete</button></div></div>`).join(''):'<p class="muted">No submissions yet.</p>';
+
+  const msgs=store.get('inbox',[]);
+  const msgWrap=document.getElementById('msgs');
+  msgWrap.innerHTML=msgs.length?msgs.map((m,idx)=>`<div class=card><h3>${m.name}</h3><p>${m.message}</p><div class=meta><span class=badge>${m.email}</span><span class=badge>${new Date(m.ts).toLocaleString()}</span></div><div style=margin-top:8px><button class=btn btn-sm onclick="delMsg(${idx})">Delete</button></div></div>`).join(''):'<p class="muted">No messages yet.</p>';
+}
+function markHandled(i){const subs=store.get('submissions',[]);subs[i].handled=!subs[i].handled;store.set('submissions',subs);render();}
+function delSub(i){const subs=store.get('submissions',[]);subs.splice(i,1);store.set('submissions',subs);render();}
+function delMsg(i){const msgs=store.get('inbox',[]);msgs.splice(i,1);store.set('inbox',msgs);render();}
+
+document.addEventListener('DOMContentLoaded',render);
+</script>
+</body>
+</html> 

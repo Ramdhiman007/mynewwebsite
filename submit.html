@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit a Problem - Tech Help Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Submit Your Problem</h1>
+  <p class="muted">Describe your issue and we’ll add a guide.</p>
+
+  <form id="submitForm" class="form">
+    <div class="row">
+      <div>
+        <label for="sname">Name</label>
+        <input id="sname" required>
+      </div>
+      <div>
+        <label for="semail">Email</label>
+        <input id="semail" type="email" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="os">OS</label>
+        <select id="os" required>
+          <option value="">Select OS</option>
+          <option>Windows</option>
+          <option>macOS</option>
+          <option>Linux</option>
+        </select>
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select id="category" required>
+          <option value="">Select category</option>
+          <option value="performance">Performance</option>
+          <option value="virus">Virus/Malware</option>
+          <option value="hardware">Hardware</option>
+          <option value="software">Software</option>
+          <option value="network">Network</option>
+          <option value="data">Data Recovery</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="desc">Problem Description</label>
+      <textarea id="desc" rows="6" required></textarea>
+      <small>Please include error messages and what you’ve tried.</small>
+    </div>
+
+    <div>
+      <label>Captcha</label>
+      <div id="submitCaptcha" class="captcha"></div>
+    </div>
+
+    <button class="btn" type="submit">Submit</button>
+    <div id="submitAlert" class="alert ok" style="display:none;margin-top:10px">Thanks! Your problem has been submitted.</div>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script>
+  const c2=captcha.create('submitCaptcha');
+  document.getElementById('submitForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!captcha.validate(c2)) return;
+    const items=store.get('submissions',[]);
+    items.push({
+      name:document.getElementById('sname').value.trim(),
+      email:document.getElementById('semail').value.trim(),
+      os:document.getElementById('os').value,
+      category:document.getElementById('category').value,
+      desc:document.getElementById('desc').value.trim(),
+      ts:Date.now(),
+      handled:false
+    });
+    store.set('submissions',items);
+    document.getElementById('submitAlert').style.display='block';
+    (e.target).reset();
+    captcha.refresh(c2);
+  });
+</script>
+</body>
+</html> 

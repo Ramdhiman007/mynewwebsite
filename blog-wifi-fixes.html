@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fix Laptop Wi‑Fi Not Connecting or Dropping | Tech Help Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">Tech Help Hub</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="problems.html">Problems</a>
+      <a href="faq.html">FAQs</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn btn-sm">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="post">
+    <header>
+      <h1>Fix Laptop Wi‑Fi Not Connecting or Dropping Frequently</h1>
+      <p class="muted">Stabilize your wireless connection with these quick checks and fixes.</p>
+    </header>
+
+    <section>
+      <h2>1) Update Network Drivers</h2>
+      <p>Outdated or corrupted drivers cause most Wi‑Fi issues.</p>
+      <p><strong>How?</strong> Device Manager → Network adapters → Your Wi‑Fi adapter → Update driver.</p>
+    </section>
+
+    <section>
+      <h2>2) Forget and Re‑Add the Network</h2>
+      <p>Clears bad credentials or configuration.</p>
+      <p><strong>How?</strong> Settings → Network & Internet → Wi‑Fi → Manage known networks → Forget → Reconnect.</p>
+    </section>
+
+    <section>
+      <h2>3) Change Router Channel / Band</h2>
+      <p>Congestion on 2.4GHz can cause drops.</p>
+      <p><strong>How?</strong> Log in to router → Wireless settings → Set channel to less crowded (e.g., 1/6/11) or switch to 5GHz.</p>
+    </section>
+
+    <section>
+      <h2>4) Disable Power Saving for Adapter</h2>
+      <p>Prevents the adapter from being throttled.</p>
+      <p><strong>How?</strong> Device Manager → Wi‑Fi adapter → Properties → Power Management → Uncheck “Allow the computer to turn off…”.</p>
+    </section>
+
+    <section>
+      <h2>5) Reset TCP/IP and Winsock</h2>
+      <p>Repairs corrupted network stacks.</p>
+      <p><strong>How?</strong> Open Command Prompt (Admin) and run:</p>
+      <pre><code>netsh int ip reset
+netsh winsock reset
+ipconfig /flushdns
+</code></pre>
+      <p>Reboot after running the commands.</p>
+    </section>
+
+    <section>
+      <h2>6) Reposition the Router / Check Interference</h2>
+      <p>Microwaves, cordless phones, and walls degrade signals.</p>
+      <p>Place router centrally, high, and away from interference sources.</p>
+    </section>
+
+    <section>
+      <h2>Guided Steps</h2>
+      <ol class="steps">
+        <li class="step"><div class="step-body"><strong>Update Network Drivers</strong><br>Device Manager → Network adapters → Your Wi‑Fi adapter → Update driver.</div><div class="step-media"><a href="assets/img/wifi/driver.svg" target="_blank" rel="noopener"><img src="assets/img/wifi/driver.svg" alt="Update driver"></a></div></li>
+        <li class="step"><div class="step-body"><strong>Forget and Re‑Add the Network</strong><br>Settings → Network & Internet → Wi‑Fi → Manage known networks → Forget → Reconnect.</div><div class="step-media"><a href="assets/img/placeholder.svg" target="_blank" rel="noopener"><img src="assets/img/placeholder.svg" alt="Forget network"></a></div></li>
+        <li class="step"><div class="step-body"><strong>Change Router Channel / Band</strong><br>Use less crowded channel or switch to 5GHz.</div><div class="step-media"><a href="assets/img/wifi/channel.svg" target="_blank" rel="noopener"><img src="assets/img/wifi/channel.svg" alt="Router channel"></a></div></li>
+        <li class="step"><div class="step-body"><strong>Disable Power Saving for Adapter</strong><br>Device Manager → Wi‑Fi adapter → Properties → Power Management.</div><div class="step-media"><a href="assets/img/wifi/power.svg" target="_blank" rel="noopener"><img src="assets/img/wifi/power.svg" alt="Power saving"></a></div></li>
+        <li class="step"><div class="step-body"><strong>Reset TCP/IP and Winsock</strong><br>Run netsh reset commands and reboot.</div><div class="step-media"><a href="assets/img/placeholder.svg" target="_blank" rel="noopener"><img src="assets/img/placeholder.svg" alt="Command prompt"></a></div></li>
+      </ol>
+    </section>
+  </article>
+
+  <section id="videoMount" aria-label="Video guide"></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tech Help Hub</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html> 
