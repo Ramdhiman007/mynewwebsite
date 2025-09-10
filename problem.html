@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Problem Detail - Tech Help Hub</title>
+<title>Problem Detail - Technical Help Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="index.html">Tech Help Hub</a>
+    <a class="logo" href="index.html">Technical Help Hub</a>
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="problems.html">Problems</a>
@@ -46,7 +46,7 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Tech Help Hub</p>
+    <p>© <span id="year"></span> Technical Help Hub</p>
     <div class="footer-links">
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
@@ -62,12 +62,12 @@ const db={
     summary:'Task Manager, Disk Cleanup, startup apps, RAM, and malware scan.',
     category:'performance', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'Open Task Manager (Ctrl + Shift + Esc) and check CPU, Memory, and Disk usage.'},
-      {text:'Close unnecessary background apps and high‑usage processes.'},
-      {text:'Run Disk Cleanup: Press Windows key → type "Disk Cleanup" → select drive C: → clean temporary files.', img:'assets/img/slow-pc/disk-cleanup.svg', alt:'Disk Cleanup'},
-      {text:'Disable unnecessary Startup programs: Task Manager → Startup tab → Disable.', img:'assets/img/slow-pc/startup.svg', alt:'Startup tab'},
-      {text:'Upgrade RAM if needed.'},
-      {text:'Scan for malware using Windows Defender or a trusted antivirus.'}
+      {text:'1. Open Task Manager (Ctrl + Shift + Esc) and check CPU, Memory, and Disk usage.', img:'assets/img/slow-pc/taskmanager.png', alt:'Task Manager'},
+      {text:'2. From processes Tab -> Close unnecessary background apps and high‑usage processes.'},
+      {text:'3. Right Click on "Start" button -> Click on "Search" option -> type "Disk Cleanup" → select drive C: → clean temporary files.', img:'assets/img/slow-pc/disk-cleanup.png', alt:'Disk Cleanup'},
+      {text:'4. Disable unnecessary Startup programs: Open Task Manager → Click on Startup tab → Disable unnecessary Startup programs.', img:'assets/img/slow-pc/startup.png', alt:'Startup tab'},
+      {text:'5. Upgrade RAM if needed.'},
+      {text:'6. Scan for malware using Windows Defender or a trusted antivirus.'}
     ]
   },
   'wifi-drop':{
@@ -75,10 +75,10 @@ const db={
     summary:'Stabilize Wi‑Fi by driver, channel and power settings.',
     category:'network', difficulty:'Medium', os:['Windows','Linux','macOS'],
     steps:[
-      {text:'Update network adapter drivers', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
-      {text:'Set Wi‑Fi channel to a less crowded one', img:'assets/img/wifi/channel.svg', alt:'Router channel change'},
-      {text:'Disable power saving for the adapter', img:'assets/img/wifi/power.svg', alt:'Power saving setting'},
-      {text:'Reset network settings'}
+      {text:'1. Update network adapter drivers', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
+      {text:'2. Set Wi‑Fi channel to a less crowded one', img:'assets/img/wifi/channel.svg', alt:'Router channel change'},
+      {text:'3. Disable power saving for the adapter', img:'assets/img/wifi/power.svg', alt:'Power saving setting'},
+      {text:'4. Reset network settings'}
     ]
   },
   // Exact mappings for the provided problems
@@ -87,11 +87,11 @@ const db={
     summary:'Power, outlet, battery (laptop), long‑press reset, PSU/adapter.',
     category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
     steps:[
-      {text:'Ensure power cable is connected properly and try a different power outlet.', img:'assets/img/placeholder.svg'},
-      {text:'For laptops: remove battery, plug in charger, and try turning on.'},
-      {text:'Press and hold power button for 10‑15 seconds to discharge.'},
-      {text:'Check PSU (desktops) or charger adapter.'},
-      {text:'If no LED indicators light up, suspect hardware failure and contact a technician.'}
+      {text:'1. Ensure power cable is connected properly and try a different power outlet.', img:'assets/img/placeholder.svg'},
+      {text:'2. For laptops: remove battery, plug in charger, and try turning on.'},
+      {text:'3. Press and hold power button for 10‑15 seconds to discharge.'},
+      {text:'4. Check PSU (desktops) or charger adapter.'},
+      {text:'5. If no LED indicators light up, suspect hardware failure and contact a technician.'}
     ]
   },
   'black-screen-no-display':{
@@ -99,11 +99,11 @@ const db={
     summary:'Brightness, external monitor, boot menu, graphics drivers, RAM.',
     category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
     steps:[
-      {text:'Check display brightness.'},
-      {text:'Test with an external monitor (HDMI/VGA).', img:'assets/img/placeholder.svg'},
-      {text:'Restart and press F8 / F12 / Esc to access Boot Menu.'},
-      {text:'Update Graphics Driver from NVIDIA/Intel/AMD website.'},
-      {text:'If stuck after BIOS: power off, reseat RAM, or test with another RAM module.'}
+      {text:'1. Check display brightness.'},
+      {text:'2. Test with an external monitor (HDMI/VGA).', img:'assets/img/placeholder.svg'},
+      {text:'3. Restart and press F8 / F12 / Esc to access Boot Menu.'},
+      {text:'4. Update Graphics Driver from NVIDIA/Intel/AMD website.'},
+      {text:'5. If stuck after BIOS: power off, reseat RAM, or test with another RAM module.'}
     ]
   },
   'overheating-issue':{
@@ -111,11 +111,11 @@ const db={
     summary:'Ventilation, cleaning, CPU usage check, thermal paste, cooling pad.',
     category:'hardware', difficulty:'Medium', os:['Windows','Linux','macOS'],
     steps:[
-      {text:'Ensure proper ventilation and don’t block air vents.'},
-      {text:'Clean internal fans using compressed air.', img:'assets/img/placeholder.svg'},
-      {text:'Check Task Manager for high CPU usage programs.'},
-      {text:'Apply fresh thermal paste to CPU.'},
-      {text:'Consider a laptop cooling pad and replace faulty fans if necessary.'}
+      {text:'1. Ensure proper ventilation and don’t block air vents.'},
+      {text:'2. Clean internal fans using compressed air.', img:'assets/img/placeholder.svg'},
+      {text:'3. Check Task Manager for high CPU usage programs.', img:'assets/img/slow-pc/Cpuusage.png', alt:'CPU USAGE'},
+      {text:'4. Apply fresh thermal paste to CPU.'},
+      {text:'5. Consider a laptop cooling pad and replace faulty fans if necessary.'}
     ]
   },
   'battery-not-charging':{
@@ -123,11 +123,11 @@ const db={
     summary:'Charger connection, battery drivers, power troubleshooter, replacement.',
     category:'hardware', difficulty:'Medium', os:['Windows'],
     steps:[
-      {text:'Ensure charger is connected properly and LED is on.'},
-      {text:'Remove battery and connect charger → try powering on.'},
-      {text:'Update Battery Drivers: Device Manager → Batteries → Update driver.', img:'assets/img/placeholder.svg'},
-      {text:'Run Power Troubleshooter: Settings → Update & Security → Troubleshoot → Power.'},
-      {text:'Replace battery if defective.'}
+      {text:'1. Ensure charger is connected properly and LED is on.'},
+      {text:'2. Remove battery and connect charger → try powering on.'},
+      {text:'3. Update Battery Drivers: Device Manager → Batteries → Update driver.', img:'assets/img/slow-pc/UpdateBattery.png', alt:'Update Battery'},
+      {text:'4. Run Power Troubleshooter: Settings → Update & Security → Troubleshoot → Additional troubleshooters → Power.', img:'assets/img/slow-pc/PowerTroubleshooter.png', alt:'Power Troubleshooter'},
+      {text:'5. Replace battery if defective.'}
     ]
   },
   'application-crashes':{
@@ -411,7 +411,22 @@ const db={
       { text: 'Retry Windows Update.' }
     ]
   },
-    	  
+  
+  'no-bootable-device': {
+    title: 'No Bootable Device Found',
+    summary: 'PC cannot find a device (HDD, SSD) with a valid operating system to boot from.',
+    category: 'hardware',
+    difficulty: 'Hard',
+    os: ['Windows'],
+    steps: [
+      { text: 'Check BIOS/UEFI settings: Ensure the hard drive is detected and the boot order is correct.', img:'assets/img/no-bootable/bios.svg', alt:'BIOS boot order' },
+      { text: 'Check SATA/Power cables (for desktops) or SSD/HDD connection (for laptops).' },
+      { text: 'If using external drives, disconnect them and try booting again.' },
+      { text: 'Repair bootloader: Use Windows Installation Media → Repair → Command Prompt → run commands: bootrec /fixmbr, bootrec /fixboot, bootrec /rebuildbcd.' },
+      { text: 'Replace the hard drive/SSD if it is not detected in BIOS or fails diagnostics.' }
+    ]
+  },
+      	  
   'webcam-not-detected':{
     title:'Webcam Not Detected',
     summary:'Privacy permissions, driver update, app tests, BIOS camera enable.',
