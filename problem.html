@@ -12,7 +12,7 @@
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="index.html">Technical Help Hub</a>
+    <a class="logo" href="index.html"><img src="assets/img/logo.svg" alt="" width="28" height="28"><span>Technical Help Hub</span></a>
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="problems.html">Problems</a>
@@ -58,502 +58,414 @@
 <script>
 const db={
   'system-running-slow':{
-    title:'🔔System Running Slow🔔',
-    summary:'Task Manager, Disk Cleanup, startup apps, RAM, and malware scan.',
+    title:'System Running Slow',
+    summary:'Identify high resource usage, clean temporary files, trim startups, check RAM, scan for malware.',
     category:'performance', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'🛠️ 1️⃣. Open Task Manager (Ctrl + Shift + Esc) and check CPU, Memory, and Disk usage.', img:'assets/img/slow-pc/taskmanager.png', alt:'Task Manager'},
-      {text:'🛠️ 2️⃣. From processes Tab -> Close unnecessary background apps and high‑usage processes.'},
-      {text:'🛠️ 3️⃣. Right Click on "Start" button -> Click on "Search" option -> type "Disk Cleanup" → select drive C: → clean temporary files.', img:'assets/img/slow-pc/disk-cleanup.png', alt:'Disk Cleanup'},
-      {text:'🛠️ 4️⃣. Disable unnecessary Startup programs: Open Task Manager → Click on Startup tab → Disable unnecessary Startup programs.', img:'assets/img/slow-pc/startup.png', alt:'Startup tab'},
-      {text:'🛠️ 5️⃣. Upgrade RAM if needed.'},
-      {text:'🛠️ 6️⃣. Scan for malware using Windows Defender or a trusted antivirus.'}
+      {text:'1. Inspect resource usage: Open Task Manager (Ctrl+Shift+Esc) → Performance and Processes tabs. Identify apps consuming CPU, Memory, or Disk.', img:'assets/img/slow-pc/taskmanager.png', alt:'Task Manager'},
+      {text:'2. Close unnecessary apps: End non‑critical high‑usage processes. Save your work before ending tasks.'},
+      {text:'3. Clear temporary files: Start → search "Disk Cleanup" → select drive C: → remove temporary files and Recycle Bin contents.', img:'assets/img/slow-pc/disk-cleanup.png', alt:'Disk Cleanup'},
+      {text:'4. Reduce startup apps: Task Manager → Startup tab → Disable non‑essential items to speed up boot.', img:'assets/img/slow-pc/startup.png', alt:'Startup tab'},
+      {text:'5. Check memory headroom: If Memory stays >80% under normal use, consider adding RAM.'},
+      {text:'6. Scan for malware: Run a full scan with Microsoft Defender or a reputable antivirus.'}
     ]
   },
   'wifi-drop':{
-    title:'🔔Wi‑Fi keeps disconnecting🔔',
-    summary:'Stabilize Wi‑Fi by driver, channel and power settings.',
+    title:'Wi‑Fi Keeps Disconnecting',
+    summary:'Stabilize Wi‑Fi by adjusting power settings, drivers, network reset, and DNS.',
     category:'network', difficulty:'Medium', os:['Windows','Linux','macOS'],
     steps:[
-	  {text:'🛠️ 1️⃣. Press Windows + X → Select Device Manager → Expand → Network Adapters →Right-click your Wi-Fi Adapter → Select Properties. Go to Power Management tab. → Uncheck:✅ “Allow the computer to turn off this device to save power”. → Click OK → Restart PC.', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
-      {text:'🛠️ 2️⃣. Press Windows + X → Select Device Manager → Expand → Network Adapters →Right-click your Wi-Fi Adapter → Select Update driver → Choose Search automatically for updated drivers.', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
-      {text:'🛠️ 3️⃣. Press Windows + X → Click on Settings → Network & Internet → Under Advanced network settings → Click on Network reset → Click on Reset now → PC will restart → Reconnect Wi-Fi and check stability.', img:'assets/img/wifi/channel.svg', alt:'Router channel change'},
-      {text:'🛠️ 4️⃣. Settings → Network & Internet → Change adapter options → Right-click Wi-Fi Adapter → Properties →Internet Protocol Version 4 (TCP/IPv4) → Properties. → Set DNS manually:✅ Preferred DNS Server: 8.8.8.8 and ✅ Alternate DNS Server: 8.8.4.4 → Click OK → and Restart your PC.', img:'assets/img/wifi/power.svg', alt:'Power saving setting'},
-      {text:'🛠️ 5️⃣. If your problem is not fixed. → Download the latest driver from the Wi-Fi adapter manufacturer’s website (Intel, Realtek, Broadcom, etc.) → Install the driver → Restart Your PC.'}
+      {text:'1. Disable power saving: Windows+X → Device Manager → Network adapters → Wi‑Fi adapter → Properties → Power Management → uncheck "Allow the computer to turn off this device" → OK → restart.', img:'assets/img/wifi/driver.svg', alt:'Device Manager power setting'},
+      {text:'2. Update the Wi‑Fi driver: Device Manager → Network adapters → Wi‑Fi adapter → Update driver → Search automatically, or install the latest from the vendor.' , img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
+      {text:'3. Reset network stack: Settings → Network & Internet → Advanced network settings → Network reset → Reset now → restart and reconnect.', img:'assets/img/wifi/channel.svg', alt:'Network reset'},
+      {text:'4. Set reliable DNS (optional): Adapter Properties → IPv4 → set Preferred DNS 8.8.8.8 and Alternate 8.8.4.4 → OK → restart.', img:'assets/img/wifi/power.svg', alt:'IPv4 DNS settings'},
+      {text:'5. Reinstall latest vendor driver (if instability persists): Download from Intel/Realtek/Broadcom, install, then restart.'}
     ]
   },
   // Exact mappings for the provided problems
   'pc-wont-turn-on': {
-  title: '🔔PC Won’t Turn On🔔',
-  summary: 'Power, outlet, battery (laptop), long‑press reset, PSU/adapter.',
+  title: 'PC Won’t Turn On',
+  summary: 'Verify power, test adapters/outlets, drain power, reseat components, and isolate faults.',
   category: 'hardware',
   difficulty: 'Medium',
   os: ['Windows', 'Linux', 'macOS'],
   steps: [
-    { text: '🛠️ 1️⃣. Check Power Connection → ✔️ Make sure power cable is properly connected to PC and wall outlet. → ✔️ Try different power outlet.', img: 'assets/img/placeholder.svg' },
-    { text: '🛠️ 2️⃣. Check Power Supply Indicator → ✅ Look for LED light on the power adapter or PC. → ❌ No light → Faulty power supply or adapter → Replace power adapter.' },
-    { text: '🛠️ 3️⃣. Remove Battery (For Laptops) → ✔️ Turn off laptop → Remove battery (if removable) → Connect charger only → Try turning on.' },
-    { text: '🛠️ 4️⃣. Perform Power Drain → ✔️ Unplug power cable → Hold power button for 10–15 seconds → Plug back power cable → Try turning on PC.' },
-    { text: '🛠️ 5️⃣. Test Power Button → ✔️ Check if power button is stuck or malfunctioning → Press firmly → Listen for any beep.' },
-    { text: '🛠️ 6️⃣. Disconnect All External Devices → ✔️ Unplug USB drives, external HDD, printer → Try turning on PC → See if issue resolves.' },
-    { text: '🛠️ 7️⃣. Check Internal Connections (For Desktops) → ✔️ Open case → Ensure motherboard power connectors (24-pin, CPU 8-pin) are properly connected → Reseat RAM and Graphics Card → Try turning on again.' },
-    { text: '🛠️ 8️⃣. Test with Another Power Cable or Adapter → ✔️ Try using a known working power cable or adapter → Eliminate faulty cable issue.' },
-    { text: '🛠️ 9️⃣. Check for Beep Codes (If any) → ✔️ Listen for beep sounds → Refer to motherboard manual → Identify hardware problem (RAM, CPU, etc.).' },
-    { text: '🛠️ 🔟. Replace Faulty Hardware → ✔️ If none of the above works → Suspect defective PSU, motherboard, or CPU → Test components individually → Replace faulty one.' }
+    { text: '1. Verify power: Ensure the power cable/adapter is firmly connected to the PC and a known‑good outlet. Try a different outlet if needed.', img: 'assets/img/placeholder.svg' },
+    { text: '2. Check indicators: Look for LEDs on the adapter/PC. No light often indicates a faulty power adapter or PSU.' },
+    { text: '3. Laptops only: Remove the battery (if removable), connect charger only, and attempt to power on.' },
+    { text: '4. Drain residual power: Unplug power → hold the power button 15 seconds → reconnect power → try again.' },
+    { text: '5. Eliminate peripherals: Disconnect USB devices and external drives, then test boot.' },
+    { text: '6. Inspect internal connections (desktops): Reseat RAM and GPU; confirm 24‑pin and CPU 8‑pin power connectors are seated.' },
+    { text: '7. Try another cable/adapter: Use a known‑working power cable or laptop adapter to rule out cable failure.' },
+    { text: '8. Listen for beeps/diagnostics: Refer to the motherboard manual to decode beep/error LEDs.' },
+    { text: '9. Suspect hardware: If all else fails, test PSU, motherboard, and CPU individually; replace the faulty component.' }
   ]
   },
   'black-screen-no-display': {
-  title: '🔔Black Screen or No Display🔔',
-  summary: 'Brightness, external monitor, boot menu, graphics drivers, RAM.',
+  title: 'Black Screen or No Display',
+  summary: 'Check power and cables, test external display, safe mode/driver fix, reseat RAM/GPU, and BIOS settings.',
   category: 'hardware',
   difficulty: 'Medium',
   os: ['Windows', 'Linux', 'macOS'],
   steps: [
-    { text: '🛠️ 1️⃣. Check Monitor Power & Connection → ✔️ Make sure Monitor is turned ON. → ✔️ Check power cable of monitor is properly connected. → ✔️ Verify video cable (HDMI, VGA, DVI, DisplayPort) is connected securely between PC and Monitor.' },
-
-    { text: '🛠️ 2️⃣. Test with External Monitor → ✔️ Connect external monitor (HDMI/VGA) → If external works → Problem with internal display or cable.' },
-
-    { text: '🛠️ 3️⃣. Adjust Brightness (Laptop Only) → ✔️ Try increasing display brightness → Use Fn + Brightness Up key.' },
-
-    { text: '🛠️ 4️⃣. Boot into Safe Mode → ✔️ Turn ON PC → Repeatedly press F8 / Shift + F8 (or F12) → Try booting in Safe Mode → If works → Graphics Driver issue.' },
-
-    { text: '🛠️ 5️⃣. Reset Display Settings → ✔️ Press Windows + P → Select “Duplicate” or “PC Screen Only” → See if display appears.' },
-
-    { text: '🛠️ 6️⃣. Reseat RAM & Graphics Card (For Desktops) → ✔️ Power OFF → Open case → Remove RAM sticks → Reinsert firmly. → ✔️ Remove Graphics Card → Reinsert → Test again.' },
-
-    { text: '🛠️ 7️⃣. Update Graphics Driver → ✔️ If Safe Mode works → Go to Device Manager → Display Adapters → Update Graphics Driver → Search Automatically or download from Intel/NVIDIA/AMD website.' },
-
-    { text: '🛠️ 8️⃣. Disable Fast Startup → ✔️ Control Panel → Power Options → Choose what power buttons do → Click “Change settings that are currently unavailable” → Uncheck “Turn on fast startup” → Save changes → Restart.' },
-
-    { text: '🛠️ 9️⃣. Check BIOS Display Settings → ✔️ Restart PC → Enter BIOS (F2 / DEL / ESC on boot) → Check Graphics settings → Ensure correct display device (Integrated or Discrete GPU).' },
-
-    { text: '🛠️ 🔟. Test for Hardware Fault → ✔️ If nothing works → Test Monitor with another PC → Test PC with another Monitor → Suspect defective Graphics Card, Monitor, or Motherboard.' }
+    { text: '1. Confirm monitor power and cabling: Monitor is ON; power and video cable (HDMI/DP/DVI/VGA) are seated at both ends.' },
+    { text: '2. Test with another display or cable: If an external monitor works, investigate the original display/cable.' },
+    { text: '3. Laptops: Increase brightness using Fn keys; some models dim to zero on battery.' },
+    { text: '4. Try Safe Mode/Recovery: Boot into Safe Mode (Windows) or equivalent; if video appears, reinstall/roll back the graphics driver.' },
+    { text: '5. Toggle display mode (Windows): Win+P → choose Duplicate or PC Screen Only.' },
+    { text: '6. Reseat RAM and GPU (desktops): Power off → reseat modules/cards → test again.' },
+    { text: '7. Update or clean‑install the GPU driver: Device Manager or vendor package (Intel/NVIDIA/AMD).' },
+    { text: '8. Review power settings: Disable Fast Startup (Windows) if recurring.' },
+    { text: '9. Check BIOS/UEFI: Ensure correct primary display (integrated vs discrete) is selected.' },
+    { text: '10. Cross‑test hardware: Swap monitors/cables and test GPU in another system if possible.' }
   ]
   },
   'overheating-issue': {
   title: 'Overheating Issue',
-  summary: 'Ventilation, cleaning, CPU usage check, thermal paste, cooling pad.',
+  summary: 'Improve airflow, remove dust, monitor temps, refresh thermal paste, and optimize power.',
   category: 'hardware',
   difficulty: 'Medium',
   os: ['Windows', 'Linux', 'macOS'],
   steps: [
-    { 
-      text: '🛠️ 1️⃣. Clean Dust from Fans & Vents → ✔️ Power OFF → Open case (Desktop) or back panel (Laptop) → Use a can of compressed air → Blow out dust from CPU/GPU fans and air vents → Prevents airflow blockages.', 
-      img: 'assets/img/overheating/step1-clean-dust.svg' 
-    },
-
-    { 
-      text: '🛠️ 2️⃣. Ensure Proper Airflow → ✔️ Place PC/Laptop on a flat, hard surface → Avoid using on bed, pillow, or carpet → Keep vents unblocked.', 
-      img: 'assets/img/overheating/step2-airflow.svg' 
-    },
-
-    { 
-      text: '🛠️ 3️⃣. Check CPU & GPU Temperatures → ✔️ Install tools like HWMonitor or Core Temp → Check temperatures during usage → Normal CPU Temp: 30°C to 70°C.', 
-      img: 'assets/img/overheating/step3-check-temperatures.svg' 
-    },
-
-    { 
-      text: '🛠️ 4️⃣. Replace Thermal Paste → ✔️ Power OFF → Open case/back panel → Remove heatsink → Apply new high-quality thermal paste → Reattach heatsink → Helps better heat transfer from CPU/GPU to cooler.', 
-      img: 'assets/img/overheating/step4-replace-thermal-paste.svg' 
-    },
-
-    { 
-      text: '🛠️ 5️⃣. Upgrade Cooling System → ✔️ Add extra case fans (Desktop) → ✔️ Use cooling pad (Laptop).', 
-      img: 'assets/img/overheating/step5-upgrade-cooling.svg' 
-    },
-
-    { 
-      text: '🛠️ 6️⃣. Limit Background Processes → ✔️ Open Task Manager (Ctrl + Shift + Esc) → End unnecessary CPU-consuming apps (e.g., torrents, browser with many tabs).', 
-      img: 'assets/img/overheating/step6-limit-processes.svg' 
-    },
-
-    { 
-      text: '🛠️ 7️⃣. Adjust Power Settings → ✔️ Windows → Power & Sleep Settings → Select Balanced or Power Saver plan instead of High Performance → Reduces unnecessary CPU load.', 
-      img: 'assets/img/overheating/step7-power-settings.svg' 
-    },
-
-    { 
-      text: '🛠️ 8️⃣. Keep Drivers Updated → ✔️ Update BIOS (from motherboard/laptop manufacturer site) → ✔️ Update Graphics and Chipset Drivers → Improves thermal management.', 
-      img: 'assets/img/overheating/step8-update-drivers.svg' 
-    },
-
-    { 
-      text: '🛠️ 9️⃣. Monitor System for Malware → ✔️ Run full system antivirus scan (Windows Defender / Malwarebytes) → Remove any malicious processes that overload CPU.', 
-      img: 'assets/img/overheating/step9-malware-scan.svg' 
-    },
-
-    { 
-      text: '🛠️ 🔟. Shutdown When Necessary → ✔️ If temperatures stay high → Shutdown system → Let it cool → Avoid continuous usage under heavy load without breaks.', 
-      img: 'assets/img/overheating/step10-shutdown-cool.svg' 
-    }
+    { text: '1. Clean dust from fans and vents: Power off → open case/back panel → use compressed air to clear CPU/GPU fans and heatsinks.', img: 'assets/img/overheating/step1-clean-dust.svg' },
+    { text: '2. Ensure airflow: Use a hard, flat surface; avoid blocking vents. Arrange cables to reduce obstructions.', img: 'assets/img/overheating/step2-airflow.svg' },
+    { text: '3. Monitor temperatures: Use HWMonitor/Core Temp (or vendor tools) and observe under load; typical idle CPU 30–50°C.', img: 'assets/img/overheating/step3-check-temperatures.svg' },
+    { text: '4. Refresh thermal paste: Remove heatsink, apply quality thermal compound, and reseat firmly.', img: 'assets/img/overheating/step4-replace-thermal-paste.svg' },
+    { text: '5. Improve cooling: Add case fans or use a laptop cooling pad for sustained workloads.', img: 'assets/img/overheating/step5-upgrade-cooling.svg' },
+    { text: '6. Reduce background load: Task Manager → end unnecessary high‑CPU apps/tabs.', img: 'assets/img/overheating/step6-limit-processes.svg' },
+    { text: '7. Optimize power: Use Balanced/Power Saver rather than High Performance to lower heat.', img: 'assets/img/overheating/step7-power-settings.svg' },
+    { text: '8. Update firmware/drivers: BIOS/UEFI, chipset, and GPU updates can improve thermal behavior.', img: 'assets/img/overheating/step8-update-drivers.svg' },
+    { text: '9. Scan for malware: Eliminate malicious processes that spike CPU usage.', img: 'assets/img/overheating/step9-malware-scan.svg' },
+    { text: '10. Pause when hot: If temperatures remain high, shut down temporarily to cool hardware.', img: 'assets/img/overheating/step10-shutdown-cool.svg' }
   ]
   },
   'battery-not-charging': {
   title: 'Battery Not Charging',
-  summary: 'Charger connection, battery drivers, power troubleshooter, replacement.',
+  summary: 'Check power and charger health, reset power, update drivers/BIOS, and evaluate battery health.',
   category: 'hardware',
   difficulty: 'Medium',
   os: ['Windows'],
   steps: [
-    { 
-      text: '🛠️ 1️⃣. Check Power Connection → ✔️ Ensure charger is properly connected to laptop and wall outlet. → ✔️ Test with another power outlet to confirm outlet works.',
-      img: 'assets/img/battery-not-charging/step1-power-connection.svg'
-    },
-
-    { 
-      text: '🛠️ 2️⃣. Inspect Charger & Cable → ✔️ Check for visible damage (frayed cable, bent plug). → ✔️ Test using another compatible charger → ✅ If works → Faulty charger → Replace it.',
-      img: 'assets/img/battery-not-charging/step2-inspect-charger-cable.svg'
-    },
-
-    { 
-      text: '🛠️ 3️⃣. Remove Battery (If Removable) → ✔️ Power OFF laptop → Remove battery → Connect charger only → Turn ON → If powers ON → Suspect faulty battery.',
-      img: 'assets/img/battery-not-charging/step3-remove-battery.svg'
-    },
-
-    { 
-      text: '🛠️ 4️⃣. Perform Power Reset → ✔️ Power OFF → Unplug charger → Remove battery (if removable) → Press and hold power button for 30 seconds → Reconnect charger and battery → Turn ON.',
-      img: 'assets/img/battery-not-charging/step4-power-reset.svg'
-    },
-
-    { 
-      text: '🛠️ 5️⃣. Check Battery Health → ✔️ Open Command Prompt (Admin) → Type "powercfg /batteryreport" and press Enter → Check generated report (usually at C:\\Users\\[Username]\\battery-report.html) → Check battery health status.',
-      img: 'assets/img/battery-not-charging/step5-battery-health.svg'
-    },
-
-    { 
-      text: '🛠️ 6️⃣. Update Battery Drivers → ✔️ Windows + X → Device Manager → Expand “Batteries” → Right-click “Microsoft ACPI-Compliant Control Method Battery” → Update Driver → Search Automatically.',
-      img: 'assets/img/battery-not-charging/step6-update-drivers.svg'
-    },
-
-    { 
-      text: '🛠️ 7️⃣. Disable and Re-enable Battery Driver → ✔️ Device Manager → Right-click “Microsoft ACPI-Compliant Control Method Battery” → Uninstall device → Restart PC → Windows will automatically reinstall driver.',
-      img: 'assets/img/battery-not-charging/step7-reinstall-driver.svg'
-    },
-
-    { 
-      text: '🛠️ 8️⃣. Check Power Plan Settings → ✔️ Settings → System → Power & Sleep → Additional Power Settings → Ensure Balanced power plan is selected → Check Advanced settings for any battery-related settings blocking charging.',
-      img: 'assets/img/battery-not-charging/step8-power-plan.svg'
-    },
-
-    { 
-      text: '🛠️ 9️⃣. BIOS/UEFI Battery Settings → ✔️ Restart Laptop → Enter BIOS/UEFI (F2 / DEL / ESC during boot) → Check Battery Health or Battery Charge Threshold settings → Disable any limit on charging (if present).',
-      img: 'assets/img/battery-not-charging/step9-bios-settings.svg'
-    },
-
-    { 
-      text: '🛠️ 🔟. Replace Battery (If Defective) → ✔️ If none of the above works → Battery health report shows poor condition → Consider replacing battery with genuine compatible one.',
-      img: 'assets/img/battery-not-charging/step10-replace-battery.svg'
-    }
+    { text: '1. Verify power: Confirm the charger is firmly connected to the laptop and a working outlet.', img: 'assets/img/battery-not-charging/step1-power-connection.svg' },
+    { text: '2. Inspect charger and cable: Check for frays or bent pins. Test with a compatible known‑good charger.', img: 'assets/img/battery-not-charging/step2-inspect-charger-cable.svg' },
+    { text: '3. Removable batteries: Power off → remove battery → connect charger only → power on. If it boots, the battery may be faulty.', img: 'assets/img/battery-not-charging/step3-remove-battery.svg' },
+    { text: '4. Power reset: Power off → unplug → (remove battery if possible) → hold power 30s → reconnect → power on.', img: 'assets/img/battery-not-charging/step4-power-reset.svg' },
+    { text: '5. Check battery health: Run Command Prompt (Admin) → powercfg /batteryreport → review the generated report for capacity degradation.', img: 'assets/img/battery-not-charging/step5-battery-health.svg' },
+    { text: '6. Update battery drivers: Device Manager → Batteries → Microsoft ACPI‑Compliant Control Method Battery → Update driver.', img: 'assets/img/battery-not-charging/step6-update-drivers.svg' },
+    { text: '7. Reinstall the battery device: In Device Manager, Uninstall device → restart to reinstall automatically.', img: 'assets/img/battery-not-charging/step7-reinstall-driver.svg' },
+    { text: '8. Review power plan: Settings → System → Power & Sleep → Additional power settings → use Balanced and verify advanced battery options.', img: 'assets/img/battery-not-charging/step8-power-plan.svg' },
+    { text: '9. BIOS/UEFI limits: Check Battery Health/Charge Threshold settings; disable any charge caps if undesired.', img: 'assets/img/battery-not-charging/step9-bios-settings.svg' },
+    { text: '10. Replace the battery if health is poor and charging remains unreliable.', img: 'assets/img/battery-not-charging/step10-replace-battery.svg' }
   ]
 },
   'application-crashes':{
     title:'Application Crashes or Won’t Open',
-    summary:'Update/reinstall, compatibility, admin mode, AV, Windows Update.',
+    summary:'Update or reinstall, verify compatibility and permissions, check antivirus, and apply OS updates.',
     category:'software', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'1. Update the application to latest version.'},
-      {text:'2. Reinstall the application.'},
-      {text:'3. Check for software compatibility with OS version.'},
-      {text:'4. Right‑click → Run as Administrator.'},
-      {text:'5. Temporarily disable antivirus to check if blocking.'},
-      {text:'6. Update Windows to latest patches.'}
+      {text:'1. Update the app to the latest version via its built‑in updater or vendor site.'},
+      {text:'2. Reinstall cleanly: Uninstall, reboot, then install the latest build.'},
+      {text:'3. Verify OS compatibility and required runtimes (.NET, VC++ redistributables).'},
+      {text:'4. Test with elevated permissions: Right‑click the app → Run as administrator.'},
+      {text:'5. Check antivirus interference: Temporarily disable or whitelist the app, then retest.'},
+      {text:'6. Install pending Windows Updates and driver updates.'}
     ]
   },
   'wifi-not-connecting':{
-    title:'WiFi Not Connecting',
-    summary:'WiFi toggle, router restart, forget/reconnect, troubleshoot, drivers, reset TCP/IP.',
+    title:'Wi‑Fi Not Connecting',
+    summary:'Confirm Wi‑Fi is enabled, refresh connection, run troubleshooters, update drivers, and reset TCP/IP.',
     category:'network', difficulty:'Medium', os:['Windows'],
     steps:[
-      {text:'1. Ensure WiFi is turned on (Laptop Fn key + WiFi key).'},
-      {text:'2. Restart router.'},
-      {text:'3. Forget and reconnect network: Settings → Network & Internet → WiFi → Manage known networks → Forget → Reconnect.'},
-      {text:'4. Run Network Troubleshooter: Settings → Troubleshoot → Internet Connections.'},
-      {text:'5. Update WiFi Driver: Device Manager → Network Adapters → Update driver.', img:'assets/img/wifi/driver.svg'},
-      {text:'6. Reset TCP/IP stack (Admin CMD): netsh int ip reset; netsh winsock reset; ipconfig /release; ipconfig /renew; ipconfig /flushdns.', img:'assets/img/placeholder.svg'}
+      {text:'1. Confirm Wi‑Fi is ON (laptops may have an Fn+key toggle or physical switch).'},
+      {text:'2. Power‑cycle the router/modem, then wait 1–2 minutes and retry.'},
+      {text:'3. Forget and rejoin: Settings → Network & Internet → Wi‑Fi → Manage known networks → Forget → reconnect with the correct password.'},
+      {text:'4. Run Internet Connections troubleshooter from Settings → Troubleshoot.'},
+      {text:'5. Update the Wi‑Fi driver: Device Manager → Network adapters → Update driver, or install the latest from the vendor.', img:'assets/img/wifi/driver.svg'},
+      {text:'6. Reset TCP/IP (Admin CMD): netsh int ip reset && netsh winsock reset && ipconfig /release && ipconfig /renew && ipconfig /flushdns.', img:'assets/img/placeholder.svg'}
     ]
   },
   'no-sound':{
     title:'No Sound from Speakers or Headphones',
-    summary:'Volume, default device, drivers, Windows Audio service, test peripherals.',
+    summary:'Verify volume/output device, update drivers, restart audio services, and test peripherals.',
     category:'hardware', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'1. Check volume settings.'},
-      {text:'2. Ensure correct audio output device selected: Right‑click speaker → Sounds → Playback → Set default.'},
-      {text:'3. Update Audio Driver: Device Manager → Sound, Video, and Game Controllers → Update driver.'},
-      {text:'4. Restart Windows Audio service: services.msc → Windows Audio → Restart.'},
-      {text:'5. Test with different headphones or speakers.'}
+      {text:'1. Confirm volume and mute states in Windows and on your speakers/headset.'},
+      {text:'2. Select the correct output: Right‑click speaker icon → Sound settings → choose the intended device and set as default.'},
+      {text:'3. Update audio drivers: Device Manager → Sound, video and game controllers → Update driver.'},
+      {text:'4. Restart audio services: services.msc → restart Windows Audio and Windows Audio Endpoint Builder.'},
+      {text:'5. Cross‑test with another headset/speakers and another app/source.'}
     ]
   },
   'usb-ports-not-working':{
     title:'USB Ports Not Working',
-    summary:'Try other devices/ports, reinstall controller drivers, power setting, BIOS.',
+    summary:'Test multiple devices/ports, reset controllers, adjust power settings, and verify BIOS.',
     category:'hardware', difficulty:'Medium', os:['Windows'],
     steps:[
-      {text:'1. Try multiple USB devices and ports.'},
-      {text:'2. Unplug all devices, restart PC.'},
-      {text:'3. Update USB Controller Drivers: Device Manager → Universal Serial Bus Controllers → Update driver.'},
-      {text:'4. Disable USB selective suspend: Control Panel → Power Options → Advanced → USB settings → Disable selective suspend.'},
-      {text:'5. Check BIOS settings to ensure USB ports are enabled.'}
+      {text:'1. Test with different USB devices and try several ports (front/back, USB‑A/C).'},
+      {text:'2. Power cycle: Shut down, unplug power (and battery if removable), wait 30s, then boot.'},
+      {text:'3. Reinstall/Update USB controllers: Device Manager → Universal Serial Bus controllers → Update or uninstall/reboot to reinstall.'},
+      {text:'4. Adjust power: Control Panel → Power Options → Advanced → USB settings → disable USB selective suspend.'},
+      {text:'5. BIOS/UEFI: Ensure USB ports are enabled and legacy USB support is on if needed.'}
     ]
   },
   'hard-drive-not-detected':{
     title:'Hard Drive Not Detected',
-    summary:'BIOS detect, cables, Disk Management initialization, CHKDSK, replace if bad.',
+    summary:'Check BIOS detection and cabling, initialize in Disk Management, run diagnostics, and replace if failed.',
     category:'hardware', difficulty:'Hard', os:['Windows'],
     steps:[
-      {text:'1. Check BIOS/UEFI → Ensure hard drive is detected.'},
-      {text:'2. Check physical SATA/Power connections.'},
-      {text:'3. Open Disk Management (Win + X → Disk Management) and initialize disk if needed.'},
-      {text:'4. Run CHKDSK to scan for errors: chkdsk C: /f /r.'},
-      {text:'5. Replace faulty hard drive if necessary.'}
+      {text:'1. BIOS/UEFI: Confirm the drive appears. If not, proceed with cable/power checks.'},
+      {text:'2. Verify SATA/power connections (desktops) or reseat the drive (laptops).' },
+      {text:'3. Initialize/format: Win+X → Disk Management → initialize new disk and create a volume if unallocated.'},
+      {text:'4. Run diagnostics: chkdsk C: /f /r, and use the drive vendor’s SMART/diagnostic tools.'},
+      {text:'5. Replace the drive if it fails detection or diagnostics consistently.'}
     ]
   },
   'forgot-windows-password':{
     title:'Forgot Windows Password',
-    summary:'Reset disk, Microsoft account recovery, installation media, third‑party tools.',
+    summary:'Use recovery options, installation media, or account tools; avoid data loss.',
     category:'software', difficulty:'Hard', os:['Windows'],
     steps:[
-      {text:'1. Use Password Reset Disk (if created earlier).'},
-      {text:'2. Windows 10/11: At login → Click “I forgot my password”.'},
-      {text:'3. Use Windows Installation Media → Advanced Options → Command Prompt → Create new local admin account.'},
-      {text:'4. Use third‑party tools (e.g., Ophcrack).'}
+      {text:'1. Microsoft account recovery: On the login screen, choose “I forgot my password” and follow verification steps.'},
+      {text:'2. Local account reset disk (if previously created): Insert the disk/USB and reset the password.'},
+      {text:'3. Installation media: Boot to Windows setup → Repair → Advanced → Command Prompt → create a new local admin (for advanced users).'},
+      {text:'4. As a last resort, consider reputable third‑party tools; back up first to avoid data loss.'}
     ]
   },
   'graphics-driver-not-working':{
     title:'Graphics Driver Not Working',
-    summary:'Uninstall old, install latest from vendor, clean mode, restart.',
+    summary:'Remove problematic drivers, install the latest vendor package in clean mode, and reboot.',
     category:'software', difficulty:'Medium', os:['Windows'],
     steps:[
-      {text:'1. Uninstall existing driver: Device Manager → Display Adapters → Uninstall driver.'},
-      {text:'2. Download latest driver from GPU manufacturer (NVIDIA, AMD, Intel).'},
-      {text:'3. Install driver in Clean Mode.'},
-      {text:'4. Restart PC after installation.'}
+      {text:'1. Remove the current driver: Device Manager → Display adapters → select GPU → Uninstall device (check delete software if offered).'},
+      {text:'2. Download the latest driver from NVIDIA/AMD/Intel for your exact model and OS.'},
+      {text:'3. Install using the vendor setup (choose Clean Installation if available).'},
+      {text:'4. Reboot and verify resolution/acceleration are normal.'}
     ]
   },
   'windows-update-failing':{
     title:'Windows Update Failing',
-    summary:'Troubleshooter, reset services/cache, SFC, retry.',
+    summary:'Run troubleshooters, reset update components, repair system files, then retry.',
     category:'software', difficulty:'Medium', os:['Windows'],
     steps:[
-      {text:'1. Run Windows Update Troubleshooter: Settings → Troubleshoot → Windows Update → Run Troubleshooter.'},
-      {text:'2. Delete SoftwareDistribution contents: stop wuauserv/bits, delete folder, start services again.'},
-      {text:'3. Check system for corrupted files: sfc /scannow.'},
-      {text:'4. Retry Windows Update.'}
+      {text:'1. Run the Windows Update troubleshooter: Settings → Troubleshoot → Windows Update.'},
+      {text:'2. Reset components: Stop wuauserv/bits → delete C:\\Windows\\SoftwareDistribution contents → restart services.'},
+      {text:'3. Repair files: Open Admin CMD → sfc /scannow; consider DISM /Online /Cleanup-Image /RestoreHealth.'},
+      {text:'4. Reboot and retry Windows Update.'}
     ]
   },
   'data-loss':{
     title:'Data Loss',
-    summary:'Recycle Bin, File History, System Restore, third‑party recovery tools.',
+    summary:'Check Recycle Bin, restore from backups or snapshots, and use recovery tools if needed.',
     category:'data', difficulty:'Hard', os:['Windows'],
     steps:[
-      {text:'1. Check Recycle Bin.'},
-      {text:'2. Use File History (if enabled).'},
-      {text:'3. Use System Restore (if restore point exists).'},
-      {text:'4. Use third‑party data recovery tools like Recuva or EaseUS Data Recovery.'},
-      {text:'5. Always back up important files regularly.'}
+      {text:'1. Recycle Bin: Restore files if present.'},
+      {text:'2. Backups: Restore from File History, OneDrive, or other backup solutions.'},
+      {text:'3. System Restore: If apps/settings are affected, use a restore point (does not recover personal files).'},
+      {text:'4. Recovery tools: Use reputable tools (e.g., Recuva, EaseUS) on a different drive to avoid overwriting.'},
+      {text:'5. Prevention: Set up regular backups (3‑2‑1 rule) to avoid future loss.'}
     ]
   },
   'time-date-reset':{
     title:'Time & Date Reset After Restart',
-    summary:'Replace CMOS battery; set correct time and automation.',
+    summary:'Replace the CMOS battery and ensure time sync is enabled.',
     category:'hardware', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'1. Replace CMOS battery on motherboard (CR2032).'},
-      {text:'2. Set correct time and date in Windows → Settings → Time & Language.'},
-      {text:'3. Ensure “Set time automatically” is ON.'}
+      {text:'1. Replace the CMOS battery (CR2032) on the motherboard if the clock resets when fully powered off.'},
+      {text:'2. Set the correct time: Settings → Time & Language → Date & Time.'},
+      {text:'3. Enable automatic time sync and correct time zone.'}
     ]
       },
       'bluetooth-not-working': {
         title: 'Bluetooth Not Working',
-        summary: 'Fix Bluetooth issues due to settings, drivers, or pairing problems.',
+        summary: 'Enable Bluetooth, run troubleshooters, update drivers, and re‑pair devices.',
         category: 'hardware',
         difficulty: 'Easy',
         os: ['Windows'],
         steps: [
-          { text: '1. Ensure Bluetooth is ON: Settings → Devices → Bluetooth → Enable.' },
-          { text: '2. Run Bluetooth Troubleshooter: Settings → Troubleshoot → Bluetooth → Run troubleshooter.' },
-          { text: '3. Update Bluetooth Driver: Device Manager → Bluetooth → Update driver.' },
-          { text: '4. Restart Bluetooth Support Service: services.msc → Locate “Bluetooth Support Service” → Restart.' },
-          { text: '5. Remove and re-pair the device.' }
+          { text: '1. Turn Bluetooth ON: Settings → Bluetooth & devices → toggle ON.' },
+          { text: '2. Run the Bluetooth troubleshooter from Settings → Troubleshoot.' },
+          { text: '3. Update the Bluetooth adapter driver via Device Manager.' },
+          { text: '4. Restart services: services.msc → restart Bluetooth Support Service.' },
+          { text: '5. Remove the device and re‑pair in Bluetooth settings.' }
         ]
       },	  
 	  'IP Address Configuration Issues': {
         title: 'IP Address Configuration Issues',
-        summary: 'Fix IP config issues by releasing/renewing IP or setting static IP.',
+        summary: 'Release/renew IP, flush DNS, verify automatic addressing, and use static IP if needed.',
         category: 'network',
         difficulty: 'Medium',
         os: ['Windows'],
         steps: [
-          { text: '1. Release & Renew IP: CMD → ipconfig /release → ipconfig /renew.' },
-          { text: '2. Flush DNS Cache: ipconfig /flushdns.' },
-          { text: '3. Ensure Auto Obtain IP: Control Panel → Network & Sharing Center → Adapter settings → IPv4 → Obtain IP address automatically.' },
-          { text: '4. Set Static IP if needed.' }
+          { text: '1. Release and renew: Admin CMD → ipconfig /release, then ipconfig /renew.' },
+          { text: '2. Flush name cache: ipconfig /flushdns.' },
+          { text: '3. Use automatic addressing: Adapter properties → IPv4 → Obtain IP and DNS automatically.' },
+          { text: '4. If DHCP fails, configure a valid static IP/gateway/DNS for your network.' }
         ]
       },
 	  'cannot-access-websites': {
         title: 'Cannot Access Specific Websites',
-        summary: 'Fix access issues by clearing cache, changing DNS, or checking hosts file.',
+        summary: 'Clear cache, try another browser, flush DNS, check hosts file, and change DNS.',
         category: 'network',
         difficulty: 'Medium',
         os: ['Windows'],
         steps: [
-          { text: '1. Clear Browser Cache & Cookies.' },
-          { text: '2. Use a different browser.' },
-          { text: '3. Flush DNS Cache: ipconfig /flushdns.' },
-          { text: '4. Check hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts → Ensure no blocking.' },
-          { text: '5. Change DNS to Google DNS: IPv4 → Preferred: 8.8.8.8 / Alternate: 8.8.4.4.' }
+          { text: '1. Clear browser cache and cookies, then retest.' },
+          { text: '2. Test in an alternate browser (e.g., Edge vs Chrome) to isolate extensions.' },
+          { text: '3. Flush DNS: Admin CMD → ipconfig /flushdns.' },
+          { text: '4. Inspect hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts → remove unintended entries.' },
+          { text: '5. Set DNS to 8.8.8.8 / 8.8.4.4 (IPv4) and retry.' }
         ]
       },
       'wifi-keeps-disconnecting': {
-        title: 'WiFi Keeps Disconnecting',
-        summary: 'Fix WiFi instability due to driver, power saving, or interference.',
+        title: 'Wi‑Fi Keeps Disconnecting',
+        summary: 'Reduce power saving, update drivers, reset network, set DNS, and re‑install if needed.',
         category: 'network',
         difficulty: 'Medium',
         os: ['Windows'],
         steps: [
-          {text:'🛠️ 1️⃣. Press Windows + X → Select Device Manager → Expand → Network Adapters →Right-click your Wi-Fi Adapter → Select Properties. Go to Power Management tab. → Uncheck:✅ “Allow the computer to turn off this device to save power”. → Click OK → Restart PC.', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
-      {text:'🛠️ 2️⃣. Press Windows + X → Select Device Manager → Expand → Network Adapters →Right-click your Wi-Fi Adapter → Select Update driver → Choose Search automatically for updated drivers.', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
-      {text:'🛠️ 3️⃣. Press Windows + X → Click on Settings → Network & Internet → Under Advanced network settings → Click on Network reset → Click on Reset now → PC will restart → Reconnect Wi-Fi and check stability.', img:'assets/img/wifi/channel.svg', alt:'Router channel change'},
-      {text:'🛠️ 4️⃣.  Settings → Network & Internet → Change adapter options → Right-click Wi-Fi Adapter → Properties →Internet Protocol Version 4 (TCP/IPv4) → Properties. → Set DNS manually:✅ Preferred DNS Server: 8.8.8.8 and ✅ Alternate DNS Server: 8.8.4.4 → Click OK → and Restart your PC.', img:'assets/img/wifi/power.svg', alt:'Power saving setting'},
-      {text:'🛠️ 5️⃣. If your problem is not fixed. → Download the latest driver from the Wi-Fi adapter manufacturer’s website (Intel, Realtek, Broadcom, etc.) → Install the driver → Restart Your PC.'}
+          {text:'1. Disable power saving: Device Manager → Wi‑Fi adapter → Properties → Power Management → uncheck power saving → restart.', img:'assets/img/wifi/driver.svg', alt:'Device Manager power setting'},
+          {text:'2. Update the adapter driver: Device Manager or vendor package for your chipset.', img:'assets/img/wifi/driver.svg', alt:'Device Manager driver update'},
+          {text:'3. Reset network: Settings → Network & Internet → Advanced network settings → Network reset → Reset now → restart.', img:'assets/img/wifi/channel.svg', alt:'Network reset'},
+          {text:'4. Optional DNS: Adapter → IPv4 → set 8.8.8.8 / 8.8.4.4 → restart.', img:'assets/img/wifi/power.svg', alt:'IPv4 DNS settings'},
+          {text:'5. Reinstall latest vendor driver if issues persist; reboot after install.'}
         ]
       },
        'slow-internet-speed': {
         title: 'Slow Internet Speed',
-        summary: 'Fix slow internet by testing speed, optimizing connection, updating drivers.',
+        summary: 'Test speed, reboot equipment, update drivers, avoid bottlenecks, prefer wired, and optimize DNS.',
         category: 'network',
         difficulty: 'Medium',
         os: ['Windows'],
         steps: [
-          { text: '🛠️ 1️⃣. Test Internet Speed 👉 Open browser → Visit [https://www.speedtest.net](https://www.speedtest.net) → Run the speed test → ✔️ Compare result with your plan speed.' },
-          { text: '🛠️ 2️⃣. Reboot Router & Modem 👉 Unplug router & modem power → Wait 30 seconds → Plug back in → Restart → Check speed again.→ Wi-Fi adapter manufacturer’s website (Intel, Realtek, Broadcom, etc.) → Install the driver → Restart Your PC.' },
-          { text: '🛠️ 3️⃣. Update Network Adapter Driver 👉 Windows + X → Device Manager →Network Adapters → Right-click Wi-Fi/Ethernet Adapter → Update Driver → Search automatically Or download latest driver from manufacturer’s site.' },
-          { text: '🛠️ 4️⃣. Disable VPN or Proxy 👉 Windows + X → Settings → Network & Internet → Proxy → Disable manual proxy →Ensure VPN software is turned off → Test speed again.' },
-          { text: '🛠️ 5️⃣. Use Wired Ethernet Instead of Wi-Fi 👉 Connect PC directly to router using Ethernet cable →✔️ Wired connection is more stable and faster than Wi-Fi.' },
-          { text: '🛠️ 6️⃣. Change DNS Server (Optional) 👉 Windows + X → Settings → Network & Internet → Change adapter options →Right-click Wi-Fi/Ethernet → Properties →Internet Protocol Version 4 (TCP/IPv4) → Properties →Set Preferred DNS Server to `8.8.8.8` and Alternate DNS to `8.8.4.4`.' },
-          { text: '🛠️ 7️⃣. Disable Background Apps & Downloads 👉 Close unnecessary apps using internet →Check Task Manager (Ctrl + Shift + Esc) →End background apps consuming bandwidth.' },
-		  { text: '🛠️ 8️⃣. Check for Interference (Wi-Fi) ✔️ Move closer to router.✔️ Avoid obstacles or electronic devices causing interference (microwaves, cordless phones).' }
+          { text: '1. Measure baseline: Run a speed test and compare to your plan.' },
+          { text: '2. Reboot modem/router: Unplug for 30 seconds, plug back in, then retest.' },
+          { text: '3. Update network adapter drivers via Device Manager or vendor site.' },
+          { text: '4. Disable VPN/proxy temporarily and retest.' },
+          { text: '5. Prefer wired: Use Ethernet to eliminate Wi‑Fi interference and improve stability.' },
+          { text: '6. Optional DNS: Set IPv4 DNS to 8.8.8.8 / 8.8.4.4 to improve lookups in some cases.' },
+          { text: '7. Reduce background usage: Close bandwidth‑heavy apps and pause large downloads.' },
+          { text: '8. Improve Wi‑Fi signal: Move closer to the router and reduce obstacles/interference.' }
         ]
       },	
        'ethernet-port-not-working': {
         title: 'Ethernet Port Not Working',
-        summary: 'Fix Ethernet port not working due to cables, config, or driver issues.',
+        summary: 'Check cable/port, verify IP configuration, update driver, reset adapter, and set static IP if needed.',
         category: 'network',
         difficulty: 'Medium',
         os: ['Windows'],
         steps: [
-          { text: '1. Check Ethernet cable and port (try different cable & port).' },
-          { text: '2. Check Network Configuration: Open CMD → ipconfig /all → Check if Ethernet adapter shows IP.' },
-          { text: '3. Update Ethernet Controller Driver: Device Manager → Network Adapters → Right-click Ethernet adapter → Update driver.' },
-          { text: '4. Disable & Re-enable Ethernet Adapter: Device Manager → Network Adapters → Disable → Enable.' },
-          { text: '5. Set Static IP (if DHCP fails): Settings → Network & Internet → Ethernet → Change adapter options → Properties → IPv4 → Set Static IP.' }
+          { text: '1. Inspect the cable and router/switch port; try a different known‑good cable/port.' },
+          { text: '2. Check configuration: Admin CMD → ipconfig /all → confirm adapter has a valid IP.' },
+          { text: '3. Update the Ethernet adapter driver via Device Manager.' },
+          { text: '4. Disable/Enable the adapter to refresh it, or use Network reset if needed.' },
+          { text: '5. If DHCP fails, configure a valid static IPv4 address, gateway, and DNS.' }
         ]
       },	  
 	  'bluetooth-not-working': {
     title: 'Bluetooth Not Working / Not Turning On',
-    summary: 'Fix Bluetooth not turning on, devices not detecting, or frequent disconnections.',
+    summary: 'Enable radio, run troubleshooters, update drivers, and ensure airplane mode is off.',
     category: 'hardware',
     difficulty: 'Easy',
     os: ['Windows'],
     steps: [
-      { text: '1. Make sure Bluetooth is enabled: Settings → Devices → Bluetooth & other devices → Toggle Bluetooth ON.' },
-      { text: '2. Run Bluetooth Troubleshooter: Settings → System → Troubleshoot → Other troubleshooters → Bluetooth → Run.' },
-      { text: '3. Update Bluetooth Drivers: Right-click Start → Device Manager → Bluetooth → Right-click Bluetooth Adapter → Update driver → Search automatically.' },
-      { text: '4. Restart Bluetooth Support Service: Windows + R → type services.msc → Find "Bluetooth Support Service" → Right-click → Restart.' },
-      { text: '5. Check Airplane Mode: Settings → Network & Internet → Airplane mode → Ensure it is OFF.' }
+      { text: '1. Ensure Bluetooth is enabled: Settings → Bluetooth & devices → toggle ON.' },
+      { text: '2. Run the Bluetooth troubleshooter (Settings → Troubleshoot → Other troubleshooters).' },
+      { text: '3. Update the Bluetooth adapter driver in Device Manager.' },
+      { text: '4. Restart Bluetooth Support Service via services.msc.' },
+      { text: '5. Verify Airplane mode is OFF in Network & Internet settings.' }
     ]
   },
   'bluetooth-device-not-detecting': {
     title: 'Bluetooth Device Not Detecting',
-    summary: 'Fix when Bluetooth devices are not being detected.',
+    summary: 'Cycle Bluetooth, re‑pair devices, ensure pairing mode, and update drivers.',
     category: 'hardware',
     difficulty: 'Medium',
     os: ['Windows'],
     steps: [
-      { text: '1. Turn Bluetooth OFF and ON again from Settings.' },
-      { text: '2. Restart PC.' },
-      { text: '3. Remove device if previously paired: Settings → Devices → Bluetooth & other devices → Select Device → Remove device → Re-pair.' },
-      { text: '4. Ensure device is in Pairing Mode.' },
-      { text: '5. Update Bluetooth driver from Device Manager.' }
+      { text: '1. Toggle Bluetooth OFF/ON from Settings to refresh the stack.' },
+      { text: '2. Restart the PC to clear transient issues.' },
+      { text: '3. Remove stale pairings, then re‑pair the device from Bluetooth settings.' },
+      { text: '4. Ensure the peripheral is in active pairing mode and near the PC.' },
+      { text: '5. Update the Bluetooth driver from Device Manager.' }
     ]
   },
   'bluetooth-disconnects-frequently': {
     title: 'Paired Bluetooth Device Disconnects Frequently',
-    summary: 'Fix frequent disconnections of paired Bluetooth devices.',
+    summary: 'Disable power saving, re‑pair devices, reduce interference, and improve range.',
     category: 'hardware',
     difficulty: 'Medium',
     os: ['Windows'],
     steps: [
-      { text: '1. Disable Power Saving: Device Manager → Bluetooth → Select Adapter → Properties → Power Management tab → Uncheck "Allow the computer to turn off this device to save power".' },
-      { text: '2. Re-pair the Bluetooth device.' },
-      { text: '3. Move closer to the PC to avoid range issues.' },
-      { text: '4. Avoid interference from other wireless devices.' }
+      { text: '1. Turn off adapter power saving: Device Manager → Bluetooth adapter → Properties → Power Management → uncheck the power saving option.' },
+      { text: '2. Remove and re‑pair the device to refresh the link.' },
+      { text: '3. Keep within range and ensure line‑of‑sight where possible.' },
+      { text: '4. Reduce interference from 2.4 GHz devices (routers, microwaves, cordless phones).' }
     ]
   },
   'bluetooth-audio-not-working': {
     title: 'Bluetooth Audio Device (Headphones, Speakers) Not Working',
-    summary: 'Fix when Bluetooth headphones or speakers do not output sound.',
+    summary: 'Set as default output, reinstall drivers, ensure audio services, then restart.',
     category: 'hardware',
     difficulty: 'Medium',
     os: ['Windows'],
     steps: [
-      { text: '1. Set device as default audio output: Right-click Sound icon → Open Sound Settings → Output → Select Bluetooth device.' },
-      { text: '2. Reinstall Audio & Bluetooth Drivers.' },
-      { text: '3. Check Bluetooth Audio Services: services.msc → "Bluetooth Audio Gateway Service" → Ensure it’s running.' },
-      { text: '4. Restart PC after pairing.' }
+      { text: '1. Set as default: Right‑click sound icon → Sound settings → choose the Bluetooth device for Output.' },
+      { text: '2. Reinstall audio and Bluetooth drivers if the device pairs but no audio plays.' },
+      { text: '3. Ensure Bluetooth audio services are running in services.msc.' },
+      { text: '4. Restart the PC after pairing to finalize profiles (A2DP/HFP).' }
     ]
   },  
   'windows-update-stuck': {
     title: 'Windows Update Stuck or Fails to Install',
-    summary: 'Fix Windows Update stuck or not installing issues.',
+    summary: 'Troubleshoot stuck updates by resetting components and repairing system files.',
     category: 'software',
     difficulty: 'Medium',
     os: ['Windows'],
     steps: [
-      { text: '1. Run Windows Update Troubleshooter: Settings → Update & Security → Troubleshoot → Windows Update → Run.' },
-      { text: '2. Clear Software Distribution Folder: Open CMD as Admin → net stop wuauserv; net stop bits; Go to C:\\Windows\\SoftwareDistribution → Delete contents; Then restart services: net start wuauserv; net start bits.' },
-      { text: '3. Run System File Checker (SFC): Open CMD as Admin → sfc /scannow.' },
-      { text: '4. Restart PC and retry Update.' }
+      { text: '1. Run the Windows Update troubleshooter from Settings → Update & Security.' },
+      { text: '2. Reset the distribution cache: Admin CMD → stop wuauserv/bits → delete C:\\Windows\\SoftwareDistribution contents → start services.' },
+      { text: '3. Repair system files: Admin CMD → sfc /scannow, optionally DISM /Online /Cleanup-Image /RestoreHealth.' },
+      { text: '4. Reboot and try Windows Update again.' }
     ]
   },
   'update-error-0x80070002': {
     title: 'Update Fails with Error Code (e.g., 0x80070002)',
-    summary: 'Fix Windows Update error codes by resetting update components.',
+    summary: 'Correct time settings, clear caches, reset components, and retry updates.',
     category: 'software',
     difficulty: 'Medium',
     os: ['Windows'],
     steps: [
-      { text: '1. Ensure Date & Time are correct.' },
-      { text: '2. Delete temporary update files: Same steps as clearing Software Distribution folder.' },
-      { text: '3. Reset Windows Update components: net stop wuauserv; net stop cryptSvc; net stop bits; net stop msiserver; ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old; ren C:\\Windows\\System32\\catroot2 catroot2.old; net start wuauserv; net start cryptSvc; net start bits; net start msiserver.' },
-      { text: '4. Retry Windows Update.' }
+      { text: '1. Correct date/time and time zone settings.' },
+      { text: '2. Clear temporary update files as in the SoftwareDistribution reset.' },
+      { text: '3. Reset components via Admin CMD: stop services → rename SoftwareDistribution and catroot2 → start services (per documented commands).' },
+      { text: '4. Retry Windows Update after a reboot.' }
     ]
   },
   
   'no-bootable-device': {
     title: 'No Bootable Device Found',
-    summary: 'PC cannot find a device (HDD, SSD) with a valid operating system to boot from.',
+    summary: 'Ensure the OS drive is detected and first in boot order; repair bootloader if required.',
     category: 'hardware',
     difficulty: 'Hard',
     os: ['Windows'],
     steps: [
-      { text: '1. Check BIOS/UEFI settings: Ensure the hard drive is detected and the boot order is correct.', img:'assets/img/no-bootable/bios.svg', alt:'BIOS boot order' },
-      { text: '2. Check SATA/Power cables (for desktops) or SSD/HDD connection (for laptops).' },
-      { text: '3. If using external drives, disconnect them and try booting again.' },
-      { text: '4. Repair bootloader: Use Windows Installation Media → Repair → Command Prompt → run commands: bootrec /fixmbr, bootrec /fixboot, bootrec /rebuildbcd.' },
-      { text: '5. Replace the hard drive/SSD if it is not detected in BIOS or fails diagnostics.' }
+      { text: '1. BIOS/UEFI: Confirm the OS drive is detected and set first in the boot order.', img:'assets/img/no-bootable/bios.svg', alt:'BIOS boot order' },
+      { text: '2. Verify SATA/power cabling (desktops) or drive seating (laptops).' },
+      { text: '3. Remove external USB drives that might be interfering with boot.' },
+      { text: '4. Repair boot records with installation media: bootrec /fixmbr, /fixboot, /rebuildbcd.' },
+      { text: '5. Replace the drive if it is not detected or fails diagnostics.' }
     ]
   },
       	  
   'webcam-not-detected':{
     title:'Webcam Not Detected',
-    summary:'Privacy permissions, driver update, app tests, BIOS camera enable.',
+    summary:'Allow camera permissions, update drivers, test across apps, and enable in BIOS if disabled.',
     category:'hardware', difficulty:'Easy', os:['Windows'],
     steps:[
-      {text:'1. Check privacy settings: Settings → Privacy → Camera → Allow apps to use camera.'},
-      {text:'2. Update webcam driver: Device Manager → Imaging devices → Update driver.'},
-      {text:'3. Test webcam in different applications.'},
-      {text:'4. Check BIOS settings → Ensure integrated webcam is enabled.'}
+      {text:'1. Allow access: Settings → Privacy → Camera → enable camera access for apps.'},
+      {text:'2. Update/reinstall driver: Device Manager → Cameras/Imaging devices → update or uninstall/reboot to reinstall.'},
+      {text:'3. Cross‑test: Try the camera in Camera app, Teams/Zoom, and a browser (after granting permissions).'},
+      {text:'4. BIOS/UEFI: Ensure the integrated webcam is enabled (some laptops offer a hardware toggle).'}
     ]
   }
 };
